@@ -203,16 +203,16 @@ public class PracticaTema8 {
     }
 
     public static void dadestotal(String nom_total[],String[] noms,String[] noms2, int[] notes_total,int[] notes, int[] notes2, int element,int element2) {
-        int x=0,z=0;
+        int index=0,index2=0;
         for (int i = 0; i < (element+element2); i++) {
-                        if ((notes[x] >= notes2[z]) && (x < element)){
-                            notes_total[i] = notes[x];
-                            nom_total[i] = noms[x];
-                                    x++;
+                        if ((notes[index] >= notes2[index2]) && (index < element)){
+                            notes_total[i] = notes[index];
+                            nom_total[i] = noms[index];
+                                    index++;
                         } else{
-                            notes_total[i] = notes2[z];
-                            nom_total[i] = noms2[z];
-                                    z++;  
+                            notes_total[i] = notes2[index2];
+                            nom_total[i] = noms2[index2];
+                                    index2++;  
                         }
                     }
                     System.out.println(Arrays.toString(nom_total));
