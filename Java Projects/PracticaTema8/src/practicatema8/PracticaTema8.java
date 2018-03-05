@@ -26,9 +26,15 @@ public class PracticaTema8 {
         int[] Notes_1DAM = new int[20];
         String[] Nom_2DAM = new String[20];
         int[] Notes_2DAM = new int[20];
+        int element = 0, element2 = 0, element3 = 0;
         String nom_total[] = new String[Nom_1DAM.length + Nom_2DAM.length];
         int notes_total[] = new int[Notes_1DAM.length + Notes_2DAM.length];
-        int element = 0, element2 = 0, element3 = 0;
+            /*La longitud dels vectors total deuria ser la cuantitat maxima dels
+             *elements pero al fer aquest canvi no se que passa que em dona error
+             *"fora dels llimits". Deuria ser aixi tal i com digueres:
+             *String nom_total[] = new String[element + element2];
+             *int notes_total[] = new int[element + element2];
+             */
         int menu = 0;
         do {
             do {
@@ -204,6 +210,7 @@ public class PracticaTema8 {
 
     public static void dadestotal(String nom_total[],String[] noms,String[] noms2, int[] notes_total,int[] notes, int[] notes2, int element,int element2) {
         int index=0,index2=0;
+                    System.out.println("Llistat de tots els alumnes.");
         for (int i = 0; i < (element+element2); i++) {
                         if ((notes[index] >= notes2[index2]) && (index < element)){
                             notes_total[i] = notes[index];
@@ -214,9 +221,11 @@ public class PracticaTema8 {
                             nom_total[i] = noms2[index2];
                                     index2++;  
                         }
+                    
+                    System.out.print(nom_total[i]+" que te de nota un "+ notes_total[i]+" .");
+                    System.out.println();
                     }
-                    System.out.println(Arrays.toString(nom_total));
-                    System.out.println(Arrays.toString(notes_total));
-
+                    
+                 
     }       
 }
