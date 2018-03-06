@@ -46,11 +46,11 @@ public class PracticaRegistres {
         for (escalera = 0; escalera < Edifici.length; escalera++) {
             for (planta = 0; planta < Edifici[escalera].length; planta++) {
                 for (porta = 0; porta < Edifici[escalera][planta].length; porta++) {
-                   
+                   Edifici[escalera][planta][porta] = 0;
                 }
-                 System.out.print(Edifici[planta]);
+                 
             }
-            System.out.print(Edifici[escalera]);
+            
         }
         
     
