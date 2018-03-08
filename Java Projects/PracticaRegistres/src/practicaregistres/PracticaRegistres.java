@@ -5,8 +5,6 @@
  */
 package practicaregistres;
 
-
-
 /**
  *
  * @author monyert
@@ -37,18 +35,18 @@ public class PracticaRegistres {
         final int TAM2 = 8;   //Nombre de plantes 
         final int TAM3 = 5;   //nombre de portes
         Vivenda Edificis[][][] = new Vivenda[TAM1][TAM2][TAM3];
-        int escalera=0;
-        int planta=0;
-        int porta=0;
-        int contador=1;
-        
+        int escalera = 0;
+        int planta = 0;
+        int porta = 0;
+        int contador = 1;
+        int ubicacio1 = 0;
+        int ubicacio2 = 0;
+        int ubicacio3 = 0;
 
-        
-        comprovar(escalera, planta, porta, contador, contador, contador, contador);
+        construirVivenda(escalera, planta, porta, contador, ubicacio1, ubicacio2, ubicacio3);
     }
 
-    
-    public static Vivenda construirVivenda() {
+    public static Vivenda dadesin() {
         Vivenda v = new Vivenda();
         v.m2 = Utils.Utilitats.leerRealG("Disme els m2 de la Vivenda");
         v.q_hab = Utils.Utilitats.leerEnteroG("Disme el numero d'Habitacions");
@@ -56,16 +54,17 @@ public class PracticaRegistres {
         v.nm.nom = Utils.Utilitats.leerTextoG("Nom del propetari");
         v.nm.cognom1 = Utils.Utilitats.leerTextoG("Primer Cognom del propetari");
         v.nm.cognom2 = Utils.Utilitats.leerTextoG("Segon Cognom del propetari");
+        v.nif = Utils.Utilitats.leerTextoG("Disme el DNI del propietari");
         return v;
     }
-    
-    public static void comprovar(int escalera,int planta,int porta,int contador,int ubicacio1,int ubicacio2,int ubicacio3){
+
+    public static void construirVivenda(int escalera, int planta, int porta, int contador, int ubicacio1, int ubicacio2, int ubicacio3) {
         //COMPROVACIO DEL CONTINGUT DE LA MATRIU
         final int TAM1 = 6;   //Nombre de escaleres
         final int TAM2 = 8;   //Nombre de plantes 
         final int TAM3 = 5;   //nombre de portes
         Vivenda Edificis[][][] = new Vivenda[TAM1][TAM2][TAM3];
-        
+
         // Iniciar matriu 
         for (escalera = 0; escalera < Edificis.length; escalera++) {
             for (planta = 0; planta < Edificis[escalera].length; planta++) {
@@ -76,8 +75,40 @@ public class PracticaRegistres {
             }
 
         }
-        
+
+        do {
+            ubicacio1 = Utils.Utilitats.leerEnteroG("Disme la escala (Del 1 al 6): ");
+        } while ((ubicacio1 < 1) || (ubicacio1 > 6));
+        do {
+            ubicacio2 = Utils.Utilitats.leerEnteroG("Disme la planta (Del 1 al 8): ");
+        } while ((ubicacio2 < 1) || (ubicacio2 > 8));
+        do {
+            ubicacio3 = Utils.Utilitats.leerEnteroG("Disme la porta (Del 1 al 5): ");
+        } while ((ubicacio3 < 1) || (ubicacio3 > 5));
+
         for (escalera = 0; escalera < Edificis.length; escalera++) {
+            for (planta = 0; planta < Edificis[escalera].length; planta++) {
+                for (porta = 0; porta < Edificis[escalera][planta].length; porta++) {
+                    if ((ubicacio1 - 1 == escalera) && (ubicacio2 - 1 == planta) && (ubicacio3 - 1 == porta)) {
+                        Edificis[escalera][planta][porta] = dadesin();
+                    }
+                }
+            }
+        }
+
+        System.out.println(Edificis[ubicacio1 - 1][ubicacio2 - 1][ubicacio3 - 1].m2 + " m2");
+        System.out.println("DNI: " + Edificis[ubicacio1 - 1][ubicacio2 - 1][ubicacio3 - 1].nif);
+        System.out.println(Edificis[ubicacio1 - 1][ubicacio2 - 1][ubicacio3 - 1].preu + " €");
+        System.out.println(Edificis[ubicacio1 - 1][ubicacio2 - 1][ubicacio3 - 1].q_hab + " Habitacio/ns");
+        System.out.println("Nom del propietari " + Edificis[ubicacio1 - 1][ubicacio2 - 1][ubicacio3 - 1].nm.nom + " "
+                + Edificis[ubicacio1 - 1][ubicacio2 - 1][ubicacio3 - 1].nm.cognom1 + " "
+                + Edificis[ubicacio1 - 1][ubicacio2 - 1][ubicacio3 - 1].nm.cognom2);
+
+    }
+}
+
+
+/*    for (escalera = 0; escalera < Edificis.length; escalera++) {
             for (planta = 0; planta < Edificis[escalera].length; planta++) {
                 for (porta = 0; porta < Edificis[escalera][planta].length; porta++) {
                     System.out.println(Edificis[escalera][planta][porta]+" es el "+ contador);
@@ -85,30 +116,4 @@ public class PracticaRegistres {
                 }
             }
            
-        }
-        
-        do{
-            ubicacio1=Utils.Utilitats.leerEnteroG("Disme la escala: ");
-        } while ((ubicacio1 < 1) || (ubicacio1 > 6));
-        do{
-            ubicacio2=Utils.Utilitats.leerEnteroG("Disme la planta: ");
-        } while ((ubicacio2 < 1) || (ubicacio2 > 8));
-        do{
-            ubicacio3=Utils.Utilitats.leerEnteroG("Disme la porta: ");
-        } while ((ubicacio3 < 1) || (ubicacio3 > 5));
-        
-        for (escalera = 0; escalera < Edificis.length; escalera++) {
-            for (planta = 0; planta < Edificis[escalera].length; planta++) {
-                for (porta = 0; porta < Edificis[escalera][planta].length; porta++) {
-                    if ((ubicacio1-1 == escalera) && (ubicacio2-1 == planta) && (ubicacio3-1 == porta)){
-                    Edificis[escalera][planta][porta] = construirVivenda();
-                    }
-                }
-            }
-        }
-        
-        System.out.println(Edificis[1][1][1]);
-        
-    }
-}
-
+        }*/
