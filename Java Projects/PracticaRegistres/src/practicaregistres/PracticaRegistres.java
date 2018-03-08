@@ -46,6 +46,8 @@ public class PracticaRegistres {
         construirVivenda(Edificis);
 
         comprarVivenda(Edificis);
+        
+        propietats(Edificis);
     }
 
     public static Vivenda dadesin() {
@@ -53,6 +55,18 @@ public class PracticaRegistres {
         v.m2 = Utils.Utilitats.leerRealG("Disme els m2 de la Vivenda");
         v.q_hab = Utils.Utilitats.leerEnteroG("Disme el numero d'Habitacions");
         v.preu = Utils.Utilitats.leerRealG("Quin preu te la Vivenda?");
+        //    v.nm.nom = Utils.Utilitats.leerTextoG("Nom del propetari");
+        //    v.nm.cognom1 = Utils.Utilitats.leerTextoG("Primer Cognom del propetari");
+        //    v.nm.cognom2 = Utils.Utilitats.leerTextoG("Segon Cognom del propetari");
+        //    v.nif = Utils.Utilitats.leerTextoG("Disme el DNI del propietari");
+        return v;
+    }
+
+    public static Vivenda dadesin2() {
+        Vivenda v = new Vivenda();
+        //    v.m2 = Utils.Utilitats.leerRealG("Disme els m2 de la Vivenda");
+        //    v.q_hab = Utils.Utilitats.leerEnteroG("Disme el numero d'Habitacions");
+        //    v.preu = Utils.Utilitats.leerRealG("Quin preu te la Vivenda?");
         v.nm.nom = Utils.Utilitats.leerTextoG("Nom del propetari");
         v.nm.cognom1 = Utils.Utilitats.leerTextoG("Primer Cognom del propetari");
         v.nm.cognom2 = Utils.Utilitats.leerTextoG("Segon Cognom del propetari");
@@ -61,9 +75,7 @@ public class PracticaRegistres {
     }
 
     public static void construirVivenda(Vivenda matriu[][][]) {
-        //COMPROVACIO DEL CONTINGUT DE LA MATRIU
         int escalera, planta, porta, ubicacio1, ubicacio2, ubicacio3, contador = 1;
-        //    Vivenda Edificis[][][] = new Vivenda[TAM1][TAM2][TAM3];
 
         // Iniciar matriu 
         for (escalera = 0; escalera < matriu.length; escalera++) {
@@ -111,33 +123,65 @@ public class PracticaRegistres {
             ubicacio3 = Utils.Utilitats.leerEnteroG("Disme la porta (Del 1 al 5): ");
         } while ((ubicacio3 < 1) || (ubicacio3 > 5));
 
-        if ((matriu[ubicacio1 - 1][ubicacio2 - 1][ubicacio3 - 1].m2 > 0) 
-                && (matriu[ubicacio1 - 1][ubicacio2 - 1][ubicacio3 - 1].nm.nom == null)
-                && (matriu[ubicacio1 - 1][ubicacio2 - 1][ubicacio3 - 1].nm.cognom1 == null)
-                && (matriu[ubicacio1 - 1][ubicacio2 - 1][ubicacio3 - 1].nm.cognom2 == null)) {
-            System.out.println("Esta buida, pots comprarla.");
-            dadesin();
+        if ((matriu[ubicacio1 - 1][ubicacio2 - 1][ubicacio3 - 1].m2 <= 0.0)) {
+            System.out.println("La vivenda no esta construida.");
         } else {
-            System.out.println("La vivenda esta ocupada.");
-            for (escalera = 0; escalera < matriu.length; escalera++) {
-                for (planta = 0; planta < matriu[escalera].length; planta++) {
-                    for (porta = 0; porta < matriu[escalera][planta].length; porta++) {
-                        if ((escalera == ubicacio1 - 1) && (planta == ubicacio2 - 1) && (porta == ubicacio3 - 1)) {
-                            System.out.println("Dades de la Vivenda numero: " + contador);
+            if ((matriu[ubicacio1 - 1][ubicacio2 - 1][ubicacio3 - 1].m2 > 0.0)
+                    && (matriu[ubicacio1 - 1][ubicacio2 - 1][ubicacio3 - 1].nm.nom == null)
+                    || (matriu[ubicacio1 - 1][ubicacio2 - 1][ubicacio3 - 1].nm.cognom1 == null)
+                    || (matriu[ubicacio1 - 1][ubicacio2 - 1][ubicacio3 - 1].nm.cognom2 == null)) {
+                System.out.println("Esta buida, pots comprarla.");
+                dadesin2();
+            } else {
+                System.out.println("La vivenda esta ocupada.");
+                for (escalera = 0; escalera < matriu.length; escalera++) {
+                    for (planta = 0; planta < matriu[escalera].length; planta++) {
+                        for (porta = 0; porta < matriu[escalera][planta].length; porta++) {
+                            if ((escalera == ubicacio1 - 1) && (planta == ubicacio2 - 1) && (porta == ubicacio3 - 1)) {
+                                System.out.println("Dades de la Vivenda numero: " + contador);
 
+                            }
+                            contador++;
                         }
-                        contador++;
                     }
                 }
-            }
 
-            System.out.println(matriu[ubicacio1 - 1][ubicacio2 - 1][ubicacio3 - 1].m2 + " m2");
-            System.out.println("DNI: " + matriu[ubicacio1 - 1][ubicacio2 - 1][ubicacio3 - 1].nif);
-            System.out.println(matriu[ubicacio1 - 1][ubicacio2 - 1][ubicacio3 - 1].preu + " €");
-            System.out.println(matriu[ubicacio1 - 1][ubicacio2 - 1][ubicacio3 - 1].q_hab + " Habitacio/ns");
-            System.out.println("Propietari: " + matriu[ubicacio1 - 1][ubicacio2 - 1][ubicacio3 - 1].nm.nom + " "
-                    + matriu[ubicacio1 - 1][ubicacio2 - 1][ubicacio3 - 1].nm.cognom1 + " "
-                    + matriu[ubicacio1 - 1][ubicacio2 - 1][ubicacio3 - 1].nm.cognom2);
+                System.out.println(matriu[ubicacio1 - 1][ubicacio2 - 1][ubicacio3 - 1].m2 + " m2");
+                System.out.println("DNI: " + matriu[ubicacio1 - 1][ubicacio2 - 1][ubicacio3 - 1].nif);
+                System.out.println(matriu[ubicacio1 - 1][ubicacio2 - 1][ubicacio3 - 1].preu + " €");
+                System.out.println(matriu[ubicacio1 - 1][ubicacio2 - 1][ubicacio3 - 1].q_hab + " Habitacio/ns");
+                System.out.println("Propietari: " + matriu[ubicacio1 - 1][ubicacio2 - 1][ubicacio3 - 1].nm.nom + " "
+                        + matriu[ubicacio1 - 1][ubicacio2 - 1][ubicacio3 - 1].nm.cognom1 + " "
+                        + matriu[ubicacio1 - 1][ubicacio2 - 1][ubicacio3 - 1].nm.cognom2);
+            }
         }
+    }
+
+    public static void propietats(Vivenda matriu[][][]) {
+         String dni;
+        int escalera, planta, porta, ubicacio1 = 0, ubicacio2 = 0, ubicacio3 = 0, contador = 1;
+        dni = Utils.Utilitats.leerTextoG("Disme el DNI: ");
+
+        for (escalera = 0; escalera < matriu.length; escalera++) {
+            for (planta = 0; planta < matriu[escalera].length; planta++) {
+                for (porta = 0; porta < matriu[escalera][planta].length; porta++) {
+                    if(matriu[ubicacio1 - 1][ubicacio2 - 1][ubicacio3 - 1].nif.equals(dni)){
+                       System.out.println("Dades de la Vivenda numero: " + contador);
+                        System.out.println("----------------------------------------");
+                       System.out.println(matriu[ubicacio1 - 1][ubicacio2 - 1][ubicacio3 - 1].m2 + " m2");
+                System.out.println("DNI: " + matriu[ubicacio1 - 1][ubicacio2 - 1][ubicacio3 - 1].nif);
+                System.out.println(matriu[ubicacio1 - 1][ubicacio2 - 1][ubicacio3 - 1].preu + " €");
+                System.out.println(matriu[ubicacio1 - 1][ubicacio2 - 1][ubicacio3 - 1].q_hab + " Habitacio/ns");
+                System.out.println("Propietari: " + matriu[ubicacio1 - 1][ubicacio2 - 1][ubicacio3 - 1].nm.nom + " "
+                        + matriu[ubicacio1 - 1][ubicacio2 - 1][ubicacio3 - 1].nm.cognom1 + " "
+                        + matriu[ubicacio1 - 1][ubicacio2 - 1][ubicacio3 - 1].nm.cognom2);
+                    }else{
+                        System.out.println(dni + " No te ninguna vivenda");
+                    }
+                    contador++;
+                }
+            }
+        }
+
     }
 }
