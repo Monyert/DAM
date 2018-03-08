@@ -43,7 +43,7 @@ public class PracticaRegistres {
         int ubicacio2 = 0;
         int ubicacio3 = 0;
 
-        construirVivenda(escalera, planta, porta, contador, ubicacio1, ubicacio2, ubicacio3);
+        construirVivenda(escalera, planta, porta, contador, ubicacio1, ubicacio2, ubicacio3, Edificis);
     }
 
     public static Vivenda dadesin() {
@@ -58,7 +58,7 @@ public class PracticaRegistres {
         return v;
     }
 
-    public static void construirVivenda(int escalera, int planta, int porta, int contador, int ubicacio1, int ubicacio2, int ubicacio3) {
+    public static void construirVivenda(int escalera, int planta, int porta, int contador, int ubicacio1, int ubicacio2, int ubicacio3,Vivenda Edifici[][][]) {
         //COMPROVACIO DEL CONTINGUT DE LA MATRIU
         final int TAM1 = 6;   //Nombre de escaleres
         final int TAM2 = 8;   //Nombre de plantes 
@@ -100,10 +100,14 @@ public class PracticaRegistres {
         System.out.println("DNI: " + Edificis[ubicacio1 - 1][ubicacio2 - 1][ubicacio3 - 1].nif);
         System.out.println(Edificis[ubicacio1 - 1][ubicacio2 - 1][ubicacio3 - 1].preu + " €");
         System.out.println(Edificis[ubicacio1 - 1][ubicacio2 - 1][ubicacio3 - 1].q_hab + " Habitacio/ns");
-        System.out.println("Nom del propietari " + Edificis[ubicacio1 - 1][ubicacio2 - 1][ubicacio3 - 1].nm.nom + " "
+        System.out.println("Propietari: " + Edificis[ubicacio1 - 1][ubicacio2 - 1][ubicacio3 - 1].nm.nom + " "
                 + Edificis[ubicacio1 - 1][ubicacio2 - 1][ubicacio3 - 1].nm.cognom1 + " "
                 + Edificis[ubicacio1 - 1][ubicacio2 - 1][ubicacio3 - 1].nm.cognom2);
 
+    }
+    
+    public static void comprarVivenda(){
+        
     }
 }
 
