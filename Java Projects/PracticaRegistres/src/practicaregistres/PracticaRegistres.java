@@ -5,6 +5,9 @@
  */
 package practicaregistres;
 
+import java.util.InputMismatchException;
+import java.util.Scanner;
+
 /**
  *
  * @author monyert
@@ -35,19 +38,41 @@ public class PracticaRegistres {
         final int TAM2 = 8;   //Nombre de plantes 
         final int TAM3 = 5;   //nombre de portes
         Vivenda Edificis[][][] = new Vivenda[TAM1][TAM2][TAM3];
-        /*  int escalera = 0;
-        int planta = 0;
-        int porta = 0;
-        int contador = 1;
-        int ubicacio1 = 0;
-        int ubicacio2 = 0;
-        int ubicacio3 = 0;
-         */
-        construirVivenda(Edificis);
 
-        comprarVivenda(Edificis);
-        
-        propietats(Edificis);
+        int menu = 0;
+        do {
+            do {
+                try {
+                    Scanner teclat = new Scanner(System.in);
+                    System.out.println("------------------------------------");
+                    System.out.println("1. Construir Vivenda.");
+                    System.out.println("2. Comprar una Vivenda.");
+                    System.out.println("3. Busqueda de propietaris.");
+                    System.out.println("0: Eixir.");
+                    System.out.println("------------------------------------");
+                    System.out.print("Que vols fer?: ");
+                    menu = teclat.nextInt();
+                } catch (InputMismatchException e) {
+                }
+            } while ((menu < 0) || (menu > 3));
+            switch (menu) {
+                case 1: {
+                    construirVivenda(Edificis);
+                }
+                break;
+                case 2: {
+                    comprarVivenda(Edificis);
+                }
+                break;
+                case 3: {
+                    propietats(Edificis);
+                }break;
+                case 0: {
+
+                }break;
+            }
+        } while (menu != 0);
+
     }
 
     public static Vivenda dadesin() {
@@ -112,7 +137,7 @@ public class PracticaRegistres {
 
     public static void comprarVivenda(Vivenda matriu[][][]) {
         int escalera, planta, porta, ubicacio1 = 0, ubicacio2 = 0, ubicacio3 = 0, contador = 1;
-        Utils.Utilitats.muestraMensajeG("Quina vivenda es la que vols comprar:");
+        Utils.Utilitats.muestraMensajeG("Quina vivenda es la que vols comprar?");
         do {
             ubicacio1 = Utils.Utilitats.leerEnteroG("Disme la escala (Del 1 al 6): ");
         } while ((ubicacio1 < 1) || (ubicacio1 > 6));
@@ -124,16 +149,16 @@ public class PracticaRegistres {
         } while ((ubicacio3 < 1) || (ubicacio3 > 5));
 
         if ((matriu[ubicacio1 - 1][ubicacio2 - 1][ubicacio3 - 1].m2 <= 0.0)) {
-            System.out.println("La vivenda no esta construida.");
+            Utils.Utilitats.muestraMensajeG("La vivenda no esta construida.");
         } else {
             if ((matriu[ubicacio1 - 1][ubicacio2 - 1][ubicacio3 - 1].m2 > 0.0)
                     && (matriu[ubicacio1 - 1][ubicacio2 - 1][ubicacio3 - 1].nm.nom == null)
                     || (matriu[ubicacio1 - 1][ubicacio2 - 1][ubicacio3 - 1].nm.cognom1 == null)
                     || (matriu[ubicacio1 - 1][ubicacio2 - 1][ubicacio3 - 1].nm.cognom2 == null)) {
-                System.out.println("Esta buida, pots comprarla.");
+                Utils.Utilitats.muestraMensajeG("Esta buida, pots comprarla.");
                 dadesin2();
             } else {
-                System.out.println("La vivenda esta ocupada.");
+                Utils.Utilitats.muestraMensajeG("La vivenda esta ocupada.");
                 for (escalera = 0; escalera < matriu.length; escalera++) {
                     for (planta = 0; planta < matriu[escalera].length; planta++) {
                         for (porta = 0; porta < matriu[escalera][planta].length; porta++) {
@@ -158,24 +183,24 @@ public class PracticaRegistres {
     }
 
     public static void propietats(Vivenda matriu[][][]) {
-         String dni;
+        String dni;
         int escalera, planta, porta, ubicacio1 = 0, ubicacio2 = 0, ubicacio3 = 0, contador = 1;
         dni = Utils.Utilitats.leerTextoG("Disme el DNI: ");
 
         for (escalera = 0; escalera < matriu.length; escalera++) {
             for (planta = 0; planta < matriu[escalera].length; planta++) {
                 for (porta = 0; porta < matriu[escalera][planta].length; porta++) {
-                    if(matriu[ubicacio1 - 1][ubicacio2 - 1][ubicacio3 - 1].nif.equals(dni)){
-                       System.out.println("Dades de la Vivenda numero: " + contador);
+                    if (matriu[escalera][planta][porta].nif.equals(dni)) {
+                        System.out.println("Dades de la Vivenda numero: " + contador);
                         System.out.println("----------------------------------------");
-                       System.out.println(matriu[ubicacio1 - 1][ubicacio2 - 1][ubicacio3 - 1].m2 + " m2");
-                System.out.println("DNI: " + matriu[ubicacio1 - 1][ubicacio2 - 1][ubicacio3 - 1].nif);
-                System.out.println(matriu[ubicacio1 - 1][ubicacio2 - 1][ubicacio3 - 1].preu + " €");
-                System.out.println(matriu[ubicacio1 - 1][ubicacio2 - 1][ubicacio3 - 1].q_hab + " Habitacio/ns");
-                System.out.println("Propietari: " + matriu[ubicacio1 - 1][ubicacio2 - 1][ubicacio3 - 1].nm.nom + " "
-                        + matriu[ubicacio1 - 1][ubicacio2 - 1][ubicacio3 - 1].nm.cognom1 + " "
-                        + matriu[ubicacio1 - 1][ubicacio2 - 1][ubicacio3 - 1].nm.cognom2);
-                    }else{
+                        System.out.println(matriu[ubicacio1 - 1][ubicacio2 - 1][ubicacio3 - 1].m2 + " m2");
+                        System.out.println("DNI: " + matriu[ubicacio1 - 1][ubicacio2 - 1][ubicacio3 - 1].nif);
+                        System.out.println(matriu[ubicacio1 - 1][ubicacio2 - 1][ubicacio3 - 1].preu + " €");
+                        System.out.println(matriu[ubicacio1 - 1][ubicacio2 - 1][ubicacio3 - 1].q_hab + " Habitacio/ns");
+                        System.out.println("Propietari: " + matriu[ubicacio1 - 1][ubicacio2 - 1][ubicacio3 - 1].nm.nom + " "
+                                + matriu[ubicacio1 - 1][ubicacio2 - 1][ubicacio3 - 1].nm.cognom1 + " "
+                                + matriu[ubicacio1 - 1][ubicacio2 - 1][ubicacio3 - 1].nm.cognom2);
+                    } else {
                         System.out.println(dni + " No te ninguna vivenda");
                     }
                     contador++;
