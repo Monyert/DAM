@@ -65,7 +65,11 @@ public class PracticaRegistres {
                 }
                 break;
                 case 3: {
+                    try{
                     propietats(Edificis);
+                    } catch (NullPointerException e) {
+                        } //Com no podia capturar un error al if else, he decidit capturar
+                          //cualsevol error que vinga de la funcio.
                 }
                 break;
                 case 0: {
@@ -191,7 +195,7 @@ public class PracticaRegistres {
                     if (matriu[escalera][planta][porta] == null) {
                         continue;
                     }
-                    if (matriu[escalera][planta][porta].nif.equalsIgnoreCase(dni)) {
+                    else if(matriu[escalera][planta][porta].nif.equalsIgnoreCase(dni)) {
                         try {
                             System.out.println("Dades de la Vivenda numero: " + contador);
                             System.out.println("----------------------------------------");
@@ -206,7 +210,7 @@ public class PracticaRegistres {
                         }
                     } else {
                         try {
-                            System.out.println(dni + " No te ninguna vivenda");
+                            System.out.println("El DNI: "+ dni + " No te ninguna vivenda");
                         } catch (NullPointerException e) {
                         }
                     }
