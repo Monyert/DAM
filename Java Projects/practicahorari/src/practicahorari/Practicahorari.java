@@ -88,7 +88,7 @@ public class Practicahorari {
 
     public static void omplirHorari(Horari matriu[][]) {
         int hora, dia, ubicacio1, ubicacio2;
-
+        //Si volem plenar el horari tot de una, comentem els "do-while" i el "if"
         do {
             ubicacio1 = Utils.Utilitats.leerEnteroG("Disme quin parcial de hores vols introduir (Del 1 al 6): ");
         } while ((ubicacio1 < 1) || (ubicacio1 > 6));
