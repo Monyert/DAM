@@ -64,7 +64,7 @@ public class Practicahorari {
 
                 break;
                 case 3: {
-                    //modificar
+                    modificar(Clases);
 
                 }
 
@@ -120,10 +120,10 @@ public class Practicahorari {
                         if (matriu[hora][dia] == null) {
                             continue;
                         } else if (matriu[hora][dia].modul.equalsIgnoreCase(modulin)) {
-                            System.out.println("Totes les dades recollides de la " + hora + " Hora del dia " + dia);
-                            System.out.println(matriu[hora][dia].aula);
+                            System.out.println("Totes les dades recollides de la " + (hora+1) + " Hora del dia " + (dia+1));
+                        //    System.out.println(matriu[hora][dia].aula);
                             System.out.println(matriu[hora][dia].modul);
-                            System.out.println(matriu[hora][dia].profe);
+                        //    System.out.println(matriu[hora][dia].profe);
 
                         }
                     }
@@ -138,9 +138,9 @@ public class Practicahorari {
                         if (matriu[hora][dia] == null) {
                             continue;
                         } else if (matriu[hora][dia].profe.equalsIgnoreCase(profein)) {
-                            System.out.println("Totes les dades recollides de la " + hora + " Hora del dia " + dia);
-                            System.out.println(matriu[hora][dia].aula);
-                            System.out.println(matriu[hora][dia].modul);
+                            System.out.println("Totes les dades recollides de la " + (hora+1) + " Hora del dia " + (dia+1));
+                        //    System.out.println(matriu[hora][dia].aula);
+                        //    System.out.println(matriu[hora][dia].modul);
                             System.out.println(matriu[hora][dia].profe);
 
                         }
@@ -149,16 +149,16 @@ public class Practicahorari {
             }
             break;
             case 3: {
-                aulain = Utils.Utilitats.leerEnteroG("Disme el Modul: ");
+                aulain = Utils.Utilitats.leerEnteroG("Disme l' aula: ");
                 for (hora = 0; hora < matriu.length; hora++) {
                     for (dia = 0; dia < matriu[hora].length; dia++) {
                         if (matriu[hora][dia] == null) {
                             continue;
                         } else if (matriu[hora][dia].aula == aulain) {
-                            System.out.println("Totes les dades recollides de la " + hora + " Hora del dia " + dia);
+                            System.out.println("Totes les dades recollides de la " + (hora+1) + " Hora del dia " + (dia+1));
                             System.out.println(matriu[hora][dia].aula);
-                            System.out.println(matriu[hora][dia].modul);
-                            System.out.println(matriu[hora][dia].profe);
+                        //    System.out.println(matriu[hora][dia].modul);
+                        //    System.out.println(matriu[hora][dia].profe);
 
                         }
                     }
@@ -176,23 +176,81 @@ public class Practicahorari {
 
     public static int submenu() {
         int menu = 0;
-        do {
-            do {
-                try {
-                    Scanner teclat = new Scanner(System.in);
-                    System.out.println("------------------------------------");
-                    System.out.println("1. Mostrar el modul.");
-                    System.out.println("2. Mostrar el Professor.");
-                    System.out.println("3. Mostrar aula.");
-                    System.out.println("0: Torna Arrere.");
-                    System.out.println("------------------------------------");
-                    System.out.print("Que vols fer?: ");
-                    menu = teclat.nextInt();
-                } catch (InputMismatchException e) {
-                }
-            } while ((menu < 0) || (menu > 3));
 
-        } while (menu != 0);
+        do {
+            try {
+                Scanner teclat = new Scanner(System.in);
+                System.out.println("------------------------------------");
+                System.out.println("1. Mostrar el modul.");
+                System.out.println("2. Mostrar el Professor.");
+                System.out.println("3. Mostrar aula.");
+                System.out.println("0: Torna Arrere.");
+                System.out.println("------------------------------------");
+                System.out.print("Que vols fer?: ");
+                menu = teclat.nextInt();
+            } catch (InputMismatchException e) {
+            }
+        } while ((menu < 0) || (menu > 3));
+
         return menu;
+    }
+
+    public static void modificar(Horari matriu[][]) {
+        int hora, dia;
+        String modulin;
+        String profein;
+        int aulain = 0;
+
+        int opcio = submenu();
+        switch (opcio) {
+            case 1: {
+                modulin = Utils.Utilitats.leerTextoG("Disme el Modul: ");
+                for (hora = 0; hora < matriu.length; hora++) {
+                    for (dia = 0; dia < matriu[hora].length; dia++) {
+                        if (matriu[hora][dia] == null) {
+                            continue;
+                        } else {
+                            matriu[hora][dia].modul = modulin;
+                        }
+
+                    }
+                }
+            }
+            break;
+
+            case 2: {
+                profein = Utils.Utilitats.leerTextoG("Disme el Professor: ");
+                for (hora = 0; hora < matriu.length; hora++) {
+                    for (dia = 0; dia < matriu[hora].length; dia++) {
+                        if (matriu[hora][dia] == null) {
+                            continue;
+                        } else {
+                            matriu[hora][dia].profe = profein;
+
+                        }
+                    }
+                }
+            }
+            break;
+            case 3: {
+                aulain = Utils.Utilitats.leerEnteroG("Disme l' aula: ");
+                for (hora = 0; hora < matriu.length; hora++) {
+                    for (dia = 0; dia < matriu[hora].length; dia++) {
+                        if (matriu[hora][dia] == null) {
+                            continue;
+                        } else {
+                            matriu[hora][dia].aula = aulain;
+                        }
+                    }
+                }
+            }
+            break;
+            case 0: {
+
+            }
+            break;
+
+        }
+
     }
 }
