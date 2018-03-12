@@ -27,21 +27,59 @@ public class Practicahorari {
     public static void main(String[] args) {
         final int TAM1 = 6;   //hores
         final int TAM2 = 5;   //dies
-        int opcio;
         Horari Clases[][] = new Horari[TAM1][TAM2];
 
-        omplirHorari(Clases);
-        mostrarhorari(Clases);
-    }
-
-    public static void omplirHorari(Horari matriu[][]) {
-        int hora, dia, ubicacio1, ubicacio2;
+        int menu = 0;
         System.out.println("Parcial de hores: 1 ->  8:00 -   8:55 | Dies: 1 -> Dilluns \n"
                 + "                  2 ->  8:55 -   9:50 |       2 -> Dimats \n"
                 + "                  3 ->  9:50 -  10:45 |       3 -> Dimecres \n"
                 + "                  4 -> 11:15 -  12:10 |       4 -> Dijous \n"
                 + "                  5 -> 11:15 -  13:05 |       5 -> Divendres \n"
                 + "                  6 -> 13:05 -  14:00 |\n");
+        do {
+            do {
+                try {
+                    Scanner teclat = new Scanner(System.in);
+                    System.out.println("------------------------------------");
+                    System.out.println("1. Omplir Horari.");
+                    System.out.println("2. Mostrar Horari.");
+                    System.out.println("3. Modificar.");
+                    System.out.println("0: Eixir.");
+                    System.out.println("------------------------------------");
+                    System.out.print("Que vols fer?: ");
+                    menu = teclat.nextInt();
+                } catch (InputMismatchException e) {
+                }
+            } while ((menu < 0) || (menu > 3));
+            switch (menu) {
+
+                case 1: {
+                    omplirHorari(Clases);
+                }
+                break;
+                case 2: {
+                    mostrarhorari(Clases);
+
+                }
+
+                break;
+                case 3: {
+                    //modificar
+
+                }
+
+                break;
+                case 0: {
+
+                }
+                break;
+            }
+        } while (menu != 0);
+    }
+
+    public static void omplirHorari(Horari matriu[][]) {
+        int hora, dia, ubicacio1, ubicacio2;
+
         do {
             ubicacio1 = Utils.Utilitats.leerEnteroG("Disme quin parcial de hores vols introduir (Del 1 al 6): ");
         } while ((ubicacio1 < 1) || (ubicacio1 > 6));
@@ -72,7 +110,9 @@ public class Practicahorari {
         String modulin;
         String profein;
         int aulain = 0;
-        switch (submenu()) {
+
+        int opcio = submenu();
+        switch (opcio) {
             case 1: {
                 modulin = Utils.Utilitats.leerTextoG("Disme el Modul: ");
                 for (hora = 0; hora < matriu.length; hora++) {
@@ -80,8 +120,10 @@ public class Practicahorari {
                         if (matriu[hora][dia] == null) {
                             continue;
                         } else if (matriu[hora][dia].modul.equalsIgnoreCase(modulin)) {
-                            System.out.println("Totes les dades recollides de la "+ hora +" Hora del dia "+ dia);
-                            System.out.println("");
+                            System.out.println("Totes les dades recollides de la " + hora + " Hora del dia " + dia);
+                            System.out.println(matriu[hora][dia].aula);
+                            System.out.println(matriu[hora][dia].modul);
+                            System.out.println(matriu[hora][dia].profe);
 
                         }
                     }
@@ -96,8 +138,10 @@ public class Practicahorari {
                         if (matriu[hora][dia] == null) {
                             continue;
                         } else if (matriu[hora][dia].profe.equalsIgnoreCase(profein)) {
-                            System.out.println("Totes les dades recollides.");
-                            System.out.println("");
+                            System.out.println("Totes les dades recollides de la " + hora + " Hora del dia " + dia);
+                            System.out.println(matriu[hora][dia].aula);
+                            System.out.println(matriu[hora][dia].modul);
+                            System.out.println(matriu[hora][dia].profe);
 
                         }
                     }
@@ -111,8 +155,10 @@ public class Practicahorari {
                         if (matriu[hora][dia] == null) {
                             continue;
                         } else if (matriu[hora][dia].aula == aulain) {
-                            System.out.println("Totes les dades recollides.");
-                            System.out.println("");
+                            System.out.println("Totes les dades recollides de la " + hora + " Hora del dia " + dia);
+                            System.out.println(matriu[hora][dia].aula);
+                            System.out.println(matriu[hora][dia].modul);
+                            System.out.println(matriu[hora][dia].profe);
 
                         }
                     }
@@ -123,7 +169,9 @@ public class Practicahorari {
 
             }
             break;
+
         }
+
     }
 
     public static int submenu() {
@@ -136,13 +184,14 @@ public class Practicahorari {
                     System.out.println("1. Mostrar el modul.");
                     System.out.println("2. Mostrar el Professor.");
                     System.out.println("3. Mostrar aula.");
-                    System.out.println("0: Eixir.");
+                    System.out.println("0: Torna Arrere.");
                     System.out.println("------------------------------------");
                     System.out.print("Que vols fer?: ");
                     menu = teclat.nextInt();
                 } catch (InputMismatchException e) {
                 }
             } while ((menu < 0) || (menu > 3));
+
         } while (menu != 0);
         return menu;
     }
