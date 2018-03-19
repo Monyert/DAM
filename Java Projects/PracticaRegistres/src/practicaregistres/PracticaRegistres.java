@@ -192,7 +192,7 @@ public class PracticaRegistres {
         for (escalera = 0; escalera < matriu.length; escalera++) {
             for (planta = 0; planta < matriu[escalera].length; planta++) {
                 for (porta = 0; porta < matriu[escalera][planta].length; porta++) {
-                    if (matriu[escalera][planta][porta] == null) {
+                    if (matriu[escalera][planta][porta] == null || matriu[escalera][planta][porta].nif==null) {
                         continue;
                     }
                     else if(matriu[escalera][planta][porta].nif.equalsIgnoreCase(dni)) {
