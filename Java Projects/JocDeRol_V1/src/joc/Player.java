@@ -18,6 +18,7 @@ abstract class Player {
         this.p_atack = p_atack;
         this.p_def = p_def;
         this.p_v = p_v;
+        System.out.println("Constructor ----> He creat un Player");
     }
     
 }

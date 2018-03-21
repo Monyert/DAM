@@ -13,7 +13,7 @@ public class Warrior extends Human{
     
     public Warrior(String name, int p_atack, int p_def, int p_v) {
         super(name, p_atack, p_def, p_v);
-        System.out.println("He creat un Warrior");
+        System.out.println("Constructor ----> He creat un Warrior");
     }
     
 }
