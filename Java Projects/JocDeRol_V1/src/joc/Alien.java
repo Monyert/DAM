@@ -11,8 +11,8 @@ package joc;
  */
 public class Alien extends Player{
     
-    public Alien(String name, int p_atack, int p_def, int p_v) {
-        super(name, p_atack, p_def, p_v);
+    public Alien() {
+        super();
         System.out.println("Constructor ----> He creat un Alien");
     }
     

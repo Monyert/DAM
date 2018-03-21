@@ -24,11 +24,11 @@ public class JocDeRol {
     
     public static void provafase(String name){
         System.out.println("Creating the Human character");
-          Human pj1 = new Human(name, 0, 0, 0);
+          Human h = new Human(name, 0, 0, 0);
         System.out.println("Creating the Warrior character");
-        Warrior pj2 = new Warrior(name, 0, 0, 0);
+        Warrior w = new Warrior(name, 0, 0, 0);
         System.out.println("Creating the Alien character");
-          Alien pj3 = new Alien(name, 0, 0, 0);
+          Alien a = new Alien(name, 0, 0, 0);
     }
            
 }
