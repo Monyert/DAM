@@ -11,7 +11,7 @@ package joc;
  */
 public class Warrior extends Human{
     
-    public Warrior() {
+    public  Warrior() {
         super();
         System.out.println("Constructor ----> He creat un Warrior");
     }

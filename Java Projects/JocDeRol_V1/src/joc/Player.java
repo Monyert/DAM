@@ -12,9 +12,10 @@ package joc;
 abstract class Player {
     
 
-    Player() {
+    public Player() {
        
         System.out.println("Constructor ----> He creat un Player");
     }
     
 }
+

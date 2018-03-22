@@ -14,21 +14,23 @@ import joc.Warrior;
  * @author monyert
  */
 public class JocDeRol {
+
     /**
      * @param args the command line arguments
      */
     public static void main(String[] args) {
-        String name="";
-        provafase(name);
+        provafase();
     }
-    
-    public static void provafase(String name){
-        System.out.println("Creating the Human character");
-          Human h = new Human(name, 0, 0, 0);
-        System.out.println("Creating the Warrior character");
-        Warrior w = new Warrior(name, 0, 0, 0);
-        System.out.println("Creating the Alien character");
-          Alien a = new Alien(name, 0, 0, 0);
+
+    public static void provafase() {
+        
+        Human h = new Human("John Smith", 13, 8, 39);
+        Alien a = new Alien("Martian PK", 27, 2, 32);
+        Warrior w = new Warrior("Monyert", 99, 99, 100);
+        System.out.println(h);
+        System.out.println(a);
+        
+        h.Attack(a);
     }
-           
+
 }
