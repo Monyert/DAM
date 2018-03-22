@@ -23,14 +23,15 @@ public abstract class Player {
     }
 
     public  void Attack(Player p) {
-        System.out.println("Abans de l'Atac");
-        System.out.println("Atacant: " + p);
+        System.out.println("ABANS DE L'ATAC:");
+        System.out.println("Atacant: " + toString());
         System.out.println("Atacat: " + p);
         System.out.println("ATAC:");
-        System.out.print(name+" es colpejat amb "+attackPoints+ " i es defen amb "+defensePoints+".");
-        Hit(attackPoints);
-        System.out.print(name+" es colpejat amb "+attackPoints+ " i es defen amb "+defensePoints+".");
-        Hit(attackPoints);
+        p.Hit(attackPoints);
+        Hit(p.attackPoints);
+        System.out.println("DESPRES DE L'ATAC:");
+        System.out.println("Atacant: " + toString());
+        System.out.println("Atacat: " + p);
     }
 
     public String getName() {
@@ -52,7 +53,11 @@ public abstract class Player {
     protected  void Hit(int attackPoints){
         int resultat;
         resultat = attackPoints - defensePoints;
-        System.out.println("Vides: "+life+" - "+ resultat);
+        if (resultat > 0){
+
+        System.out.print(this.name+" es colpejat amb "+attackPoints+ " i es defen amb "+this.defensePoints+".");
+        System.out.println("Vides: "+life+" - "+ resultat+" = "+(life=life-resultat));
+        }
         
     }
 
