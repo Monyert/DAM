@@ -53,11 +53,23 @@ public abstract class Player {
     protected  void Hit(int attackPoints){
         int resultat;
         resultat = attackPoints - defensePoints;
-        if (resultat > 0){
-
-        System.out.print(this.name+" es colpejat amb "+attackPoints+ " i es defen amb "+this.defensePoints+".");
-        System.out.println("Vides: "+life+" - "+ resultat+" = "+(life=life-resultat));
+        
+        if (life >= resultat){
+            life-=resultat;
+           
+        }else {
+             System.out.println("ESTAA MORRTT");
         }
+        
+        if (resultat > 0){
+        System.out.print(this.name+" es colpejat amb "+attackPoints+ " i es defen amb "+this.defensePoints+".");
+        
+        }else{
+            System.out.println(this.name+" es colpejat amb "+attackPoints+ " i es defen amb "+this.defensePoints+".");
+        //System.out.println("Vides: "+life+" - "+ resultat+" = "+(life=life-resultat));
+            System.out.println(" La Defensa ha tingut exit");
+        }
+        System.out.println("Vides: "+this.life+" - "+ resultat+" = "+(life));
         
     }
 
