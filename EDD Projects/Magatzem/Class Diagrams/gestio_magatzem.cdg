@@ -1,0 +1,174 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<ClassDiagram name="gestio_magatzem">
+  <ClassDiagramComponents>
+    <Class name="Clients" package="Clients" visibility="public" xPosition="68.0" yPosition="36.0">
+      <Fields>
+        <Field name="codi" type="int" visibility="private"/>
+        <Field name="nom" type="String" visibility="private"/>
+        <Field name="telefon" type="int" visibility="private"/>
+        <Field name="adresa" type="String" visibility="private"/>
+      </Fields>
+      <Constructors/>
+      <Methods>
+        <Method name="getcodi_cli" returnType="int" visibility="public"/>
+        <Method name="getnom_cli" returnType="String" visibility="public"/>
+        <Method name="gettelefon" returnType="int" visibility="public"/>
+        <Method name="getadresa" returnType="String" visibility="public"/>
+      </Methods>
+    </Class>
+    <Class name="Articles" package="Facturacio" visibility="public" xPosition="544.0" yPosition="195.0">
+      <Fields>
+        <Field name="codi" type="int" visibility="private"/>
+        <Field name="nom" type="String" visibility="private"/>
+        <Field name="pvp" type="float" visibility="private"/>
+        <Field name="stock" type="int" visibility="private"/>
+      </Fields>
+      <Constructors/>
+      <Methods>
+        <Method name="getcodi_art" returnType="int" visibility="public"/>
+        <Method name="getnom_art" returnType="String" visibility="public"/>
+        <Method name="getpvp" returnType="float" visibility="public"/>
+        <Method name="stock" returnType="int" visibility="public"/>
+      </Methods>
+    </Class>
+    <Class name="Factures" package="Facturacio" visibility="public" xPosition="374.0" yPosition="241.0">
+      <Fields>
+        <Field name="num" type="int" visibility="private"/>
+        <Field name="data" type="String" visibility="private"/>
+      </Fields>
+      <Constructors/>
+      <Methods>
+        <Method name="getnum" returnType="int" visibility="public"/>
+        <Method name="getdata" returnType="String" visibility="public"/>
+      </Methods>
+    </Class>
+    <Class name="Linies_factura" package="Facturacio" visibility="public" xPosition="444.0" yPosition="36.0">
+      <Fields>
+        <Field name="codi_article" type="int" visibility="private"/>
+        <Field name="unitats_venudes" type="int" visibility="private"/>
+      </Fields>
+      <Constructors/>
+      <Methods/>
+    </Class>
+    <Class name="Empreses" package="Clients" visibility="public" xPosition="9.0" yPosition="317.0">
+      <Fields>
+        <Field name="CIF" type="int" visibility="private"/>
+        <Field name="rao_social" type="String" visibility="private"/>
+      </Fields>
+      <Constructors/>
+      <Methods>
+        <Method name="getcif" returnType="int" visibility="public"/>
+        <Method name="getrao_social" returnType="String" visibility="public"/>
+      </Methods>
+    </Class>
+    <Class name="Particulars" package="Clients" visibility="public" xPosition="197.0" yPosition="317.0">
+      <Fields>
+        <Field name="descompte" type="int" visibility="private"/>
+      </Fields>
+      <Constructors/>
+      <Methods>
+        <Method name="getdescompte" returnType="int" visibility="public"/>
+      </Methods>
+    </Class>
+    <Class name="OpEmpreses" package="Clients" visibility="public" xPosition="9.0" yPosition="524.0">
+      <Fields/>
+      <Constructors/>
+      <Methods>
+        <Method name="alta" returnType="void" visibility="public"/>
+        <Method name="baixa" returnType="void" visibility="public"/>
+        <Method name="modificar" returnType="void" visibility="public"/>
+        <Method name="consultar" returnType="void" visibility="public"/>
+        <Method name="informes" returnType="void" visibility="public"/>
+      </Methods>
+    </Class>
+    <Class name="OpParticulars" package="Clients" visibility="public" xPosition="228.0" yPosition="500.0">
+      <Fields/>
+      <Constructors/>
+      <Methods>
+        <Method name="alta" returnType="void" visibility="public"/>
+        <Method name="baixa" returnType="void" visibility="public"/>
+        <Method name="modificar" returnType="void" visibility="public"/>
+        <Method name="consultar" returnType="void" visibility="public"/>
+        <Method name="informes" returnType="void" visibility="public"/>
+      </Methods>
+    </Class>
+    <Class name="OpFactures" package="Facturacio" visibility="public" xPosition="399.0" yPosition="464.0">
+      <Fields/>
+      <Constructors/>
+      <Methods>
+        <Method name="alta" returnType="void" visibility="public"/>
+        <Method name="baixa" returnType="void" visibility="public"/>
+        <Method name="modificar" returnType="void" visibility="public"/>
+        <Method name="consultar" returnType="void" visibility="public"/>
+        <Method name="informes" returnType="void" visibility="public"/>
+      </Methods>
+    </Class>
+    <Class name="OpArticles" package="Facturacio" visibility="public" xPosition="594.0" yPosition="524.0">
+      <Fields/>
+      <Constructors/>
+      <Methods>
+        <Method name="alta" returnType="void" visibility="public"/>
+        <Method name="baixa" returnType="void" visibility="public"/>
+        <Method name="modificar" returnType="void" visibility="public"/>
+        <Method name="consultar" returnType="void" visibility="public"/>
+        <Method name="informes" returnType="void" visibility="public"/>
+      </Methods>
+    </Class>
+    <Interface name="Finestrainicial" package="Interficie" visibility="public" xPosition="274.0" yPosition="751.0">
+      <Methods>
+        <Method name="obrirfinestraempreses" returnType="void" visibility="public"/>
+        <Method name="obrirfinestraparticulars" returnType="void" visibility="public"/>
+        <Method name="obrirfinestraarticles" returnType="void" visibility="public"/>
+        <Method name="obrirfinestrafactures" returnType="void" visibility="public"/>
+      </Methods>
+    </Interface>
+    <Interface name="Finestraempreses" package="Interficie" visibility="public" xPosition="9.0" yPosition="962.0">
+      <Methods>
+        <Method name="inserir_registre" returnType="void" visibility="public"/>
+        <Method name="modificar_registre" returnType="void" visibility="public"/>
+        <Method name="borrar_registre" returnType="void" visibility="public"/>
+      </Methods>
+    </Interface>
+    <Interface name="Finestraparticulars" package="Interficie" visibility="public" xPosition="201.0" yPosition="962.0">
+      <Methods>
+        <Method name="inserir_registre" returnType="void" visibility="public"/>
+        <Method name="modificar_registre" returnType="void" visibility="public"/>
+        <Method name="borrar_registre" returnType="void" visibility="public"/>
+      </Methods>
+    </Interface>
+    <Interface name="Finestraarticles" package="Interficie" visibility="public" xPosition="396.0" yPosition="962.0">
+      <Methods>
+        <Method name="inserir_registre" returnType="void" visibility="public"/>
+        <Method name="modificar_registre" returnType="void" visibility="public"/>
+        <Method name="borrar_registre" returnType="void" visibility="public"/>
+      </Methods>
+    </Interface>
+    <Interface name="Finestrafactures" package="Interficie" visibility="public" xPosition="602.0" yPosition="962.0">
+      <Methods>
+        <Method name="inserir_registre" returnType="void" visibility="public"/>
+        <Method name="modificar_registre" returnType="void" visibility="public"/>
+        <Method name="borrar_registre" returnType="void" visibility="public"/>
+      </Methods>
+    </Interface>
+  </ClassDiagramComponents>
+  <ClassDiagramRelations>
+    <IsRelation name="is" source="Interficie.Finestrafactures" target="Interficie.Finestrainicial"/>
+    <IsRelation name="is" source="Interficie.Finestraarticles" target="Interficie.Finestrainicial"/>
+    <UseRelation name="ini_part" source="Interficie.Finestrainicial" target="Clients.OpParticulars" sourceCardinality="1..1" targetCardinality="1..*"/>
+    <UseRelation name="ini_emp" source="Interficie.Finestrainicial" target="Clients.OpEmpreses" sourceCardinality="1..1" targetCardinality="1..*"/>
+    <IsRelation name="is" source="Interficie.Finestraempreses" target="Interficie.Finestrainicial"/>
+    <IsRelation name="is" source="Clients.Particulars" target="Clients.Clients"/>
+    <IsRelation name="is" source="Clients.Empreses" target="Clients.Clients"/>
+    <UseRelation name="op_fact" source="Interficie.Finestrainicial" target="Facturacio.OpFactures" sourceCardinality="1..1" targetCardinality="1..*"/>
+    <HasRelation name="Estar" source="Facturacio.Articles" target="Facturacio.Linies_factura" type="Default" sourceCardinality="0..1" targetCardinality="1..*" collectionType="List"/>
+    <UseRelation name="Tindre" source="Clients.Clients" target="Facturacio.Factures" sourceCardinality="1..1" targetCardinality="1..*"/>
+    <UseRelation name="op_part" source="Clients.OpParticulars" target="Clients.Particulars" sourceCardinality="1..1" targetCardinality="1..*"/>
+    <UseRelation name="op_emp" source="Clients.OpEmpreses" target="Clients.Empreses" sourceCardinality="1..1" targetCardinality="1..*"/>
+    <UseRelation name="op_art" source="Facturacio.OpArticles" target="Facturacio.Articles" sourceCardinality="1..1" targetCardinality="1..*"/>
+    <UseRelation name="op_fact" source="Facturacio.OpFactures" target="Facturacio.Factures" sourceCardinality="1..1" targetCardinality="1..*"/>
+    <HasRelation name="Formada" source="Facturacio.Factures" target="Facturacio.Linies_factura" type="Composition" sourceCardinality="0..1" targetCardinality="1..*" collectionType="List"/>
+    <UseRelation name="op_art" source="Interficie.Finestrainicial" target="Facturacio.OpArticles" sourceCardinality="1..1" targetCardinality="1..*"/>
+    <IsRelation name="is" source="Interficie.Finestraparticulars" target="Interficie.Finestrainicial"/>
+  </ClassDiagramRelations>
+</ClassDiagram>

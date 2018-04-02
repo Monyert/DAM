@@ -27,13 +27,13 @@ public class JocDeRol {
         Human h = new Human("John Smith", 13, 8, 39);
         Alien a = new Alien("Martian PK", 27, 2, 32);
         Warrior w = new Warrior("Monyert", 99, 99, 100); //Per supost el meu pj, que es el millor.
-        System.out.println(h);
-        System.out.println(a);
+     //   System.out.println(h);
+     //   System.out.println(a);
         
-          h.Attack(a);
-        h.Attack(a);
-        h.Attack(a);
-        h.Attack(a);
+          a.Attack(h);
+        a.Attack(h);
+        a.Attack(h);
+        a.Attack(h);
     }
 
 }
