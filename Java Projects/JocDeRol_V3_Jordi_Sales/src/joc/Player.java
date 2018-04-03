@@ -65,6 +65,18 @@ public abstract class Player {
         return life;
     }
 
+    public void setAttackPoints(int attackPoints) {
+        this.attackPoints = attackPoints;
+    }
+
+    public void setDefensePoints(int defensePoints) {
+        this.defensePoints = defensePoints;
+    }
+
+    public void setLife(int life) {
+        this.life = life;
+    }
+    
     protected void Hit(int attackPoints) {
         int resultat;
         resultat = attackPoints - defensePoints;

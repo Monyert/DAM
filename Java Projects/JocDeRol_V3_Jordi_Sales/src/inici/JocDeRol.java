@@ -30,10 +30,10 @@ public class JocDeRol {
      //   System.out.println(h);
      //   System.out.println(a);
         
-          a.Attack(h);
-        a.Attack(h);
-        a.Attack(h);
-        a.Attack(h);
+          h.Attack(a);
+        h.Attack(a);
+        h.Attack(a);
+        h.Attack(a);
     }
 
 }
