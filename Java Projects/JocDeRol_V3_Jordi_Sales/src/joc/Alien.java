@@ -40,10 +40,7 @@ public class Alien extends Player {
                 p.Hit(getAttackPoints());
                 if (p.getLife() == 0) {
                     System.out.print(p.getName() + "No pot efectuar un atac. \n");
-                    //   System.out.println("DESPRES DE L'ATAC:");
-                    //   System.out.println("Atacant: " + getName() + " PA:" + getAttackPoints() + " / PD:" + getDefensePoints() + " / PV:" + getLife());
-                    //   System.out.println("Atacat: " + p);
-                    //   setDefensePoints(vardef);
+
                 } else {
                     Hit(p.getAttackPoints());
                     System.out.println("DESPRES DE L'ATAC:");
@@ -57,10 +54,7 @@ public class Alien extends Player {
                 p.Hit(getAttackPoints());
                 if (p.getLife() == 0) {
                     System.out.print(p.getName() + " No pot efectuar un atac. \n");
-                    //   System.out.println("DESPRES DE L'ATAC:");
-                    //   System.out.println("Atacant: " + getName() + " PA:" + getAttackPoints() + " / PD:" + getDefensePoints() + " / PV:" + getLife());
-                    //   System.out.println("Atacat: " + p);
-                    //   setDefensePoints(vardef);
+
                 } else {
                     Hit(p.getAttackPoints());
                     System.out.println("DESPRES DE L'ATAC:");
@@ -84,9 +78,7 @@ public class Alien extends Player {
                 p.Hit(getAttackPoints());
                 if (p.getLife() == 0) {
                     System.out.print(p.getName() + " No pot efectuar un atac. \n");
-                    //   System.out.println("DESPRES DE L'ATAC:");
-                    //   System.out.println("Atacant: " + this);
-                    //   System.out.println("Atacat: " + p);
+
                 } else {
                     Hit(p.getAttackPoints());
                     System.out.println("DESPRES DE L'ATAC:");
