@@ -17,4 +17,6 @@ public class Human extends Player{
             setLife(100);
         }
     }
+    
+    
 }

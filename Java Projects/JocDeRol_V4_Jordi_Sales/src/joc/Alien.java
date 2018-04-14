@@ -15,6 +15,7 @@ public class Alien extends Player {
         super(name, attackPoints, defensePoints, life);
     }
 
+    
     @Override
     public void Attack(Player p) {
         int vardef = getDefensePoints();

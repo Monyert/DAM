@@ -5,6 +5,9 @@
  */
 package joc;
 
+import java.util.ArrayList;
+import java.util.Objects;
+
 /**
  *
  * @author monyert
@@ -15,6 +18,7 @@ public abstract class Player {
     private int attackPoints;
     private int defensePoints;
     private int life;
+    private ArrayList <Team> Teams = new ArrayList <>();
 
     public Player(String name, int attackPoints, int defensePoints, int life) {
         this.name = name;
@@ -77,6 +81,53 @@ public abstract class Player {
         this.life = life;
     }
     
+    public void add(Team t){
+        //añadir jugador al equipo, esta dentro ya?
+        Teams.add(t);
+        t.setPlayers(this);
+    }
+    
+    public void remove(Team t){
+        Teams.remove(t);
+        t.remove(this);
+    }
+
+    @Override
+    public int hashCode() {
+        int hash = 7;
+        hash = 29 * hash + Objects.hashCode(this.Teams);
+        return hash;
+    }
+
+    @Override
+    public boolean equals(Object obj) {
+        if (this == obj) {
+            return true;
+        }
+        if (obj == null) {
+            return false;
+        }
+        if (getClass() != obj.getClass()) {
+            return false;
+        }
+        final Player other = (Player) obj;
+        if (!Objects.equals(this.Teams, other.Teams)) {
+            return false;
+        }
+        return true;
+    }
+    
+    
+
+    public void setTeams(Team t) {
+        Teams.add(t);
+        
+    }
+
+    public ArrayList<Team> getTeams() {
+        return Teams;
+    }
+    
     protected void Hit(int attackPoints) {
         int resultat;
         resultat = attackPoints - defensePoints;
@@ -104,7 +155,7 @@ public abstract class Player {
 
     @Override
     public String toString() {
-        return name + " PA:" + attackPoints + " / PD:" + defensePoints + " / PV:" + life;
+        return name + " PA:" + attackPoints + " / PD:" + defensePoints + " / PV:" + life ;
     }
 
 }

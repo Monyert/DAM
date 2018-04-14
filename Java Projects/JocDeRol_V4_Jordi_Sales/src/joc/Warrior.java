@@ -15,6 +15,7 @@ public class Warrior extends Human{
         super(name, attackPoints, defensePoints, life);
     }
     
+    
     @Override
     protected void Hit(int attackPoints) {
         int resultat;
