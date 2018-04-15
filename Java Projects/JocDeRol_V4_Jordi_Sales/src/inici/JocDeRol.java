@@ -32,22 +32,30 @@ public class JocDeRol {
         Warrior w = new Warrior("Monyert", 27, 14, 40); //Per supost el meu pj, que es el millor.
         Team equip1 = new Team("Rekiem");
         Team equip2 = new Team("OutofControl");
+        Team equip3 = new Team("Rekiem");
+        
+    //    System.out.print(h);
+    //    System.out.print(a);
+    //    System.out.print(w);
+        a.Attack(h);
+        a.Attack(h);
+        a.Attack(h);
+        a.Attack(h);
+         
+        System.out.println("");  
+        
         h.add(equip1);
         h.add(equip2);
         w.add(equip1);
-    
-        System.out.print(h);
-        System.out.print(a);
-        System.out.print(w);
-        a.Attack(h);
-        a.Attack(h);
-        a.Attack(h);
-        a.Attack(h);
-            System.out.println("");
-          
+        w.add(equip2);
+        a.add(equip2);
+        w.add(equip2);
+        w.add(equip3);
+        h.add(equip3);
+        
         System.out.println(equip1);
         System.out.println(equip2);
-        
+        System.out.println(equip3);
     }
 
 }

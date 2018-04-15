@@ -23,8 +23,16 @@ public class Team {
     }
     
     public void add(Player p){
+        boolean iguals = false;
+        for (int i = 0; i < Players.size(); i++) {
+            iguals = p.equals(Players.get(i));
+        }
+        if (iguals = true){
+            System.out.println("No pots crear el Mateix equip");
+        }else {
         Players.add(p);
         p.setTeams(this);
+        }
     }
     
     public void remove(Player p){
@@ -39,27 +47,29 @@ public class Team {
 
     @Override
     public int hashCode() {
-        int hash = 3;
+        int hash = 7;
         return hash;
     }
 
-    @Override
-    public boolean equals(Object obj) {
-        if (this == obj) {
+    
+    public boolean equals(Team t) {
+        if (this == t) {
             return true;
         }
-        if (obj == null) {
+        if (t == null) {
             return false;
         }
-        if (getClass() != obj.getClass()) {
+        if (getClass() != t.getClass()) {
             return false;
         }
-        final Team other = (Team) obj;
+        final Team other = (Team) t;
         if (!Objects.equals(this.Players, other.Players)) {
             return false;
         }
         return true;
     }
+
+    
 
     public void setName(String name) {   
         this.name = name;

@@ -83,8 +83,16 @@ public abstract class Player {
     
     public void add(Team t){
         //añadir jugador al equipo, esta dentro ya?
+        boolean iguals = false;
+        for (int i = 0; i < Teams.size(); i++) {
+            iguals = t.equals(Teams.get(i));
+        }
+        if (iguals == true){
+            System.out.println("No pots afegir el Mateix Jugador");
+        }else {
         Teams.add(t);
         t.setPlayers(this);
+        }
     }
     
     public void remove(Team t){
@@ -95,29 +103,26 @@ public abstract class Player {
     @Override
     public int hashCode() {
         int hash = 7;
-        hash = 29 * hash + Objects.hashCode(this.Teams);
         return hash;
     }
 
-    @Override
-    public boolean equals(Object obj) {
-        if (this == obj) {
+    
+    public boolean equals(Player p) {
+        if (this == p) {
             return true;
         }
-        if (obj == null) {
+        if (p == null) {
             return false;
         }
-        if (getClass() != obj.getClass()) {
+        if (getClass() != p.getClass()) {
             return false;
         }
-        final Player other = (Player) obj;
+        final Player other = (Player) p;
         if (!Objects.equals(this.Teams, other.Teams)) {
             return false;
         }
         return true;
     }
-    
-    
 
     public void setTeams(Team t) {
         Teams.add(t);
@@ -156,7 +161,7 @@ public abstract class Player {
     @Override
     public String toString() {
         return "\b\b "+name + " PA:" + attackPoints + " / PD:" + defensePoints 
-                + " / PV:" + life +" (pertany a "+"**"+" equips)\n";
+                + " / PV:" + life +" (Pertany a "+Teams.size()+" equips)\n";
     }
 
 }
