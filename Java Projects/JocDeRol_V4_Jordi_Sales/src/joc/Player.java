@@ -35,20 +35,20 @@ public abstract class Player {
             System.out.println("La batalla ha acabat");
         } else if (life > 0) {
             System.out.println("ABANS DE L'ATAC:");
-            System.out.println("Atacant: " + this);
-            System.out.println("Atacat: " + p);
+            System.out.print("Atacant:  " + this);
+            System.out.print("Atacat:  " + p);
             System.out.println("ATAC:");
             p.Hit(attackPoints);
             if (p.life == 0) {
                 //    System.out.print("No pot efectuar un atac. \n");
                 System.out.println("DESPRES DE L'ATAC:");
-                System.out.println("Atacant: " + this);
-                System.out.println("Atacat: " + p);
+                System.out.print("Atacant:  " + this);
+                System.out.print("Atacat:  " + p);
             } else {
                 Hit(p.attackPoints);
                 System.out.println("DESPRES DE L'ATAC:");
-                System.out.println("Atacant: " + this);
-                System.out.println("Atacat: " + p);
+                System.out.print("Atacant:  " + this);
+                System.out.print("Atacat:  " + p);
             }
         }
     }
@@ -124,7 +124,7 @@ public abstract class Player {
         
     }
 
-    public ArrayList<Team> getTeams() {
+    public ArrayList getTeams() {
         return Teams;
     }
     
@@ -155,7 +155,8 @@ public abstract class Player {
 
     @Override
     public String toString() {
-        return name + " PA:" + attackPoints + " / PD:" + defensePoints + " / PV:" + life ;
+        return "\b\b "+name + " PA:" + attackPoints + " / PD:" + defensePoints 
+                + " / PV:" + life +" (pertany a "+"**"+" equips)\n";
     }
 
 }

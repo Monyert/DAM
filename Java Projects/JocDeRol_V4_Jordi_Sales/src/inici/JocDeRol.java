@@ -5,6 +5,7 @@
  */
 package inici;
 
+import javax.swing.text.html.HTMLDocument;
 import joc.Alien;
 import joc.Human;
 import joc.Player;
@@ -34,23 +35,19 @@ public class JocDeRol {
         h.add(equip1);
         h.add(equip2);
         w.add(equip1);
-        w.add(equip1);
-        if(equip1.equals(equip2)) {
-            System.out.println("Els equips no poden ser iguals");
-            System.exit(0);
-        }else{
-            
-       
-        System.out.println(h);
-        System.out.println(a);
-        System.out.println(w);
-    //    a.Attack(h);
-    //    a.Attack(h);
-    //    a.Attack(h);
-    //    a.Attack(h);
+    
+        System.out.print(h);
+        System.out.print(a);
+        System.out.print(w);
+        a.Attack(h);
+        a.Attack(h);
+        a.Attack(h);
+        a.Attack(h);
+            System.out.println("");
+          
         System.out.println(equip1);
         System.out.println(equip2);
-        }
+        
     }
 
 }

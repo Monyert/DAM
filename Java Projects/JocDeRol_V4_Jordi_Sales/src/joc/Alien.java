@@ -27,8 +27,8 @@ public class Alien extends Player {
         } else if (p.getLife() > 0) {
 
             System.out.println("ABANS DE L'ATAC:");
-            System.out.println("Atacant: " + this);
-            System.out.println("Atacat: " + p);
+            System.out.print("Atacant:  " + this);
+            System.out.print("Atacat:  " + p);
             System.out.println("ATAC:");
 
         }
@@ -45,8 +45,8 @@ public class Alien extends Player {
                 } else {
                     Hit(p.getAttackPoints());
                     System.out.println("DESPRES DE L'ATAC:");
-                    System.out.println("Atacant: " + getName() + " PA:" + getAttackPoints() + " / PD:" + getDefensePoints() + " / PV:" + getLife());
-                    System.out.println("Atacat: " + p);
+                    System.out.print("Atacant: " + this);
+                    System.out.print("Atacat:  " + p);
                     setAttackPoints(getAttackPoints() - 3);
                     setDefensePoints(vardef);
                 }
@@ -59,7 +59,7 @@ public class Alien extends Player {
                 } else {
                     Hit(p.getAttackPoints());
                     System.out.println("DESPRES DE L'ATAC:");
-                    System.out.println("Atacant: " + getName() + " PA:" + getAttackPoints() + " / PD:" + getDefensePoints() + " / PV:" + getLife());
+                    System.out.println("Atacant: " + this);
                     System.out.println("Atacat: " + p);
                     setAttackPoints(getAttackPoints() - 3);
                     setDefensePoints(vardef);
@@ -72,19 +72,18 @@ public class Alien extends Player {
             } else if (getLife() <= 0) {
                 System.out.println("La batalla ha acabat");
             } else if (p.getLife() > 0) {
-                System.out.println("ABANS DE L'ATAC:");
-                System.out.println("Atacant: " + this);
-                System.out.println("Atacat: " + p);
-                System.out.println("ATAC:");
                 p.Hit(getAttackPoints());
                 if (p.getLife() == 0) {
                     System.out.print(p.getName() + " No pot efectuar un atac. \n");
+                    System.out.println("DESPRES DE L'ATAC:");
+                    System.out.print("Atacant:  " + this);
+                    System.out.print("Atacat:  " + p);
 
                 } else {
                     Hit(p.getAttackPoints());
                     System.out.println("DESPRES DE L'ATAC:");
-                    System.out.println("Atacant: " + this);
-                    System.out.println("Atacat: " + p);
+                    System.out.print("Atacant:  " + this);
+                    System.out.print("Atacat: " + p);
                 }
             }
         }

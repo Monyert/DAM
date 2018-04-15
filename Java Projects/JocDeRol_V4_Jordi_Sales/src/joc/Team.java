@@ -33,7 +33,7 @@ public class Team {
         
     }
 
-    public ArrayList<Player> getMembers() {
+    public ArrayList getMembers() {
         return Players;
     }
 
@@ -61,7 +61,7 @@ public class Team {
         return true;
     }
 
-    public void setName(String name) {
+    public void setName(String name) {   
         this.name = name;
     }
 
@@ -76,7 +76,7 @@ public class Team {
     @Override
     public String toString() {
 
-        return "Equip "+ name +" format per: \n" + getMembers();
+        return "Equip "+ name +": \n" + Players + "\b";
         
     }
 }
