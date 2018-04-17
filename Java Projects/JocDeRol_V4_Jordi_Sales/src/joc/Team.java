@@ -5,7 +5,6 @@
  */
 package joc;
 
-
 import java.util.ArrayList;
 import java.util.Objects;
 
@@ -14,64 +13,52 @@ import java.util.Objects;
  * @author monyert
  */
 public class Team {
+
     private String name;
-    private ArrayList <Player> Players = new ArrayList <>();
-    
-    
+    private ArrayList<Player> Players = new ArrayList<>();
+
     public Team(String name) {
-        this.name = name;
-    }
-    
-    public void add(Player p){
-        boolean iguals = false;
+        
+        boolean condicio = false;
         for (int i = 0; i < Players.size(); i++) {
-            iguals = p.equals(Players.get(i));
+                
+            if (name.equals(this.name)){
+                condicio = true;
+            }
         }
-        if (iguals = true){
-            System.out.println("No pots crear el Mateix equip");
-        }else {
+        if (condicio == true) {
+                System.out.println("El equip " + this.name + " ja esta creat");
+            } else {
+                this.name = name;
+            }
+
+    }
+
+    public void add(Player p) {
         Players.add(p);
         p.setTeams(this);
-        }
     }
-    
-    public void remove(Player p){
+
+    public void setPlayers(ArrayList<Player> Players) {
+        this.Players = Players;
+    }
+
+    public void remove(Player p) {
         Players.remove(p);
-        p.remove(this);
-        
     }
 
     public ArrayList getMembers() {
         return Players;
     }
 
-    @Override
-    public int hashCode() {
-        int hash = 7;
-        return hash;
-    }
-
-    
     public boolean equals(Team t) {
-        if (this == t) {
-            return true;
-        }
-        if (t == null) {
-            return false;
-        }
-        if (getClass() != t.getClass()) {
-            return false;
-        }
-        final Team other = (Team) t;
-        if (!Objects.equals(this.Players, other.Players)) {
-            return false;
-        }
-        return true;
+        boolean iguals;
+        iguals = (t.getName().equals(this.name));
+        return iguals;
+
     }
 
-    
-
-    public void setName(String name) {   
+    public void setName(String name) {
         this.name = name;
     }
 
@@ -82,11 +69,11 @@ public class Team {
     public String getName() {
         return name;
     }
-    
+
     @Override
     public String toString() {
 
-        return "Equip "+ name +": \n" + Players + "\b";
-        
+        return "Equip " + name + ": \n" + Players + "\b";
+
     }
 }

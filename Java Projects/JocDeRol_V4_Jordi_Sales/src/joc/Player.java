@@ -83,21 +83,39 @@ public abstract class Player {
     
     public void add(Team t){
         //añadir jugador al equipo, esta dentro ya?
-        boolean iguals = false;
-        for (int i = 0; i < Teams.size(); i++) {
+        boolean iguals, condicio = false;
+        for (int i = 0; i <= Teams.size() - 1; i++) {
             iguals = t.equals(Teams.get(i));
+            if (iguals == true) {
+                condicio = iguals;
+            }
         }
-        if (iguals == true){
-            System.out.println("No pots afegir el Mateix Jugador");
-        }else {
-        Teams.add(t);
-        t.setPlayers(this);
+        if (condicio == true) {
+            System.out.println(this.name + " ja forma part del equip " + t.getName());
+        } else {
+            
+            Teams.add(t);
+            t.setPlayers(this);
+            System.out.println(this.name + " entra a l'equip " + t.getName());
         }
     }
     
     public void remove(Team t){
-        Teams.remove(t);
-        t.remove(this);
+        boolean iguals, condicio = false;
+        for (int i = 0; i <= Teams.size() - 1; i++) {
+            iguals = t.equals(Teams.get(i));
+            if (iguals == true) {
+                condicio = iguals;
+            }
+        }
+        if (condicio == true) {
+            Teams.remove(t);
+            t.remove(this);
+            System.out.println(this.name + " eliminat de l'equip " + t.getName());
+            
+        } else {
+            System.out.println("Error. "+ this.name +" no forma part de l'equip " + t.getName());
+        }
     }
 
     @Override
@@ -105,7 +123,14 @@ public abstract class Player {
         int hash = 7;
         return hash;
     }
-
+    
+    /*metode de Miguel
+    public boolean equals2(Player p) {
+        boolean valor;
+        valor = (p.getName().equals(this.name) && p.getAttackPoints() == this.attackPoints && p.getDefensePoints() == this.defensePoints
+                && p.getLife() == this.life);
+        return valor;
+    }*/
     
     public boolean equals(Player p) {
         if (this == p) {

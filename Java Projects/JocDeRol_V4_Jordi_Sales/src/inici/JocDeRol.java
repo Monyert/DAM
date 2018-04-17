@@ -30,6 +30,7 @@ public class JocDeRol {
         Human h = new Human("John Smith", 13, 8, 39);
         Alien a = new Alien("Martian PK", 27, 2, 32);
         Warrior w = new Warrior("Monyert", 27, 14, 40); //Per supost el meu pj, que es el millor.
+        
         Team equip1 = new Team("Rekiem");
         Team equip2 = new Team("OutofControl");
         Team equip3 = new Team("Rekiem");
@@ -47,15 +48,15 @@ public class JocDeRol {
         h.add(equip1);
         h.add(equip2);
         w.add(equip1);
+        w.remove(equip2);
         w.add(equip2);
-        a.add(equip2);
-        w.add(equip2);
-        w.add(equip3);
         h.add(equip3);
+        w.remove(equip2);
         
         System.out.println(equip1);
         System.out.println(equip2);
         System.out.println(equip3);
+        
     }
 
 }
