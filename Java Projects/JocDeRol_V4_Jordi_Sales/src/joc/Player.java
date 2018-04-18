@@ -82,7 +82,7 @@ public abstract class Player {
     }
     
     public void add(Team t){
-        //añadir jugador al equipo, esta dentro ya?
+        
         boolean iguals, condicio = false;
         for (int i = 0; i <= Teams.size() - 1; i++) {
             iguals = t.equals(Teams.get(i));
@@ -110,7 +110,7 @@ public abstract class Player {
         }
         if (condicio == true) {
             Teams.remove(t);
-            t.remove(this);
+            t.removePlayers(this);
             System.out.println(this.name + " eliminat de l'equip " + t.getName());
             
         } else {
@@ -152,6 +152,9 @@ public abstract class Player {
     public void setTeams(Team t) {
         Teams.add(t);
         
+    }
+    public void removeTeams(Team t){
+        Teams.remove(t);
     }
 
     public ArrayList getTeams() {

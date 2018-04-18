@@ -18,25 +18,26 @@ public class Team {
     private ArrayList<Player> Players = new ArrayList<>();
 
     public Team(String name) {
-        
-        boolean condicio = false;
-        for (int i = 0; i < Players.size(); i++) {
-                
-            if (name.equals(this.name)){
-                condicio = true;
-            }
-        }
-        if (condicio == true) {
-                System.out.println("El equip " + this.name + " ja esta creat");
-            } else {
                 this.name = name;
-            }
-
     }
 
     public void add(Player p) {
-        Players.add(p);
-        p.setTeams(this);
+        boolean iguals, condicio = false;
+        for (int i = 0; i <= Players.size() - 1; i++) {
+            iguals = p.equals(Players.get(i));
+            if (iguals == true) {
+                condicio = iguals;
+            }
+        }
+        if (condicio == true) {
+            System.out.println(p.getName() + " ja forma part del equip " + this.name );
+        } else {
+            
+            Players.add(p);
+            p.setTeams(this);
+           
+        }
+        
     }
 
     public void setPlayers(ArrayList<Player> Players) {
@@ -44,7 +45,21 @@ public class Team {
     }
 
     public void remove(Player p) {
-        Players.remove(p);
+        boolean iguals, condicio = false;
+        for (int i = 0; i <= Players.size() - 1; i++) {
+            iguals = p.equals(Players.get(i));
+            if (iguals == true) {
+                condicio = iguals;
+            }
+        }
+        if (condicio == true) {
+            Players.remove(p);
+            p.removeTeams(this);
+            System.out.println(p.getName() + " eliminat de l'equip " + this.name );
+        } else {
+            System.out.println("Error. "+ p.getName() +" no forma part de l'equip " + this.name);
+        }
+        
     }
 
     public ArrayList getMembers() {
@@ -65,6 +80,9 @@ public class Team {
     public void setPlayers(Player p) {
         Players.add(p);
     }
+    public void removePlayers(Player p) {
+        Players.remove(p);
+    }
 
     public String getName() {
         return name;
@@ -73,7 +91,7 @@ public class Team {
     @Override
     public String toString() {
 
-        return "Equip " + name + ": \n" + Players + "\b";
+        return "Equip " + name + ": \n" + Players + "\b\b";
 
     }
 }

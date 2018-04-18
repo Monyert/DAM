@@ -33,7 +33,6 @@ public class JocDeRol {
         
         Team equip1 = new Team("Rekiem");
         Team equip2 = new Team("OutofControl");
-        Team equip3 = new Team("Rekiem");
         
     //    System.out.print(h);
     //    System.out.print(a);
@@ -45,17 +44,20 @@ public class JocDeRol {
          
         System.out.println("");  
         
-        h.add(equip1);
+        
         h.add(equip2);
         w.add(equip1);
         w.remove(equip2);
         w.add(equip2);
-        h.add(equip3);
+        h.add(equip1);
         w.remove(equip2);
-        
+        equip1.add(h);
+        equip1.add(h);
+        equip1.remove(w);
+        equip1.add(w);
         System.out.println(equip1);
         System.out.println(equip2);
-        System.out.println(equip3);
+
         
     }
 
