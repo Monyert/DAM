@@ -1,0 +1,70 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<ClassDiagram name="FiguresGeometriques">
+  <ClassDiagramComponents>
+    <Class name="FormesGeometriques" package="figuresgeometriques" visibility="public" isAbstract="true" xPosition="353.0" yPosition="151.0">
+      <Fields>
+        <Field name="color" type="Color" visibility="public"/>
+      </Fields>
+      <Constructors/>
+      <Methods>
+        <Method name="area" returnType="double" visibility="public" isAbstract="true"/>
+        <Method name="perimetre" returnType="double" visibility="public" isAbstract="true"/>
+      </Methods>
+    </Class>
+    <Class name="Rectangle" package="figuresgeometriques" visibility="public" xPosition="21.0" yPosition="36.0">
+      <Fields>
+        <Field name="width" type="double" visibility="private"/>
+      </Fields>
+      <Constructors>
+        <Constructor visibility="public"/>
+        <Constructor visibility="public">
+          <Argument type="double" name="width"/>
+          <Argument type="double" name="height"/>
+        </Constructor>
+      </Constructors>
+      <Methods>
+        <Method name="area" returnType="double" visibility="public"/>
+        <Method name="perimetre" returnType="double" visibility="public"/>
+      </Methods>
+    </Class>
+    <Class name="Triangle" package="figuresgeometriques" visibility="public" xPosition="591.0" yPosition="91.0">
+      <Fields>
+        <Field name="a" type="double" visibility="private"/>
+      </Fields>
+      <Constructors>
+        <Constructor visibility="public"/>
+        <Constructor visibility="public">
+          <Argument type="double" name="a"/>
+          <Argument type="double" name="b"/>
+          <Argument type="double" name="c"/>
+        </Constructor>
+      </Constructors>
+      <Methods>
+        <Method name="area" returnType="double" visibility="public"/>
+        <Method name="perimetre" returnType="double" visibility="public"/>
+      </Methods>
+    </Class>
+    <Class name="Cercle" package="figuresgeometriques" visibility="public" xPosition="78.0" yPosition="255.0">
+      <Fields>
+        <Field name="radius" type="double" visibility="private"/>
+        <Field name="pi" type="double" visibility="package"/>
+      </Fields>
+      <Constructors>
+        <Constructor visibility="public"/>
+        <Constructor visibility="public">
+          <Argument type="double" name="radius"/>
+        </Constructor>
+      </Constructors>
+      <Methods>
+        <Method name="area" returnType="double" visibility="public"/>
+        <Method name="perimetre" returnType="double" visibility="public"/>
+      </Methods>
+    </Class>
+  </ClassDiagramComponents>
+  <ClassDiagramRelations>
+    <IsRelation name="is" source="figuresgeometriques.Cercle" target="figuresgeometriques.FormesGeometriques"/>
+    <IsRelation name="is" source="figuresgeometriques.Triangle" target="figuresgeometriques.FormesGeometriques"/>
+    <IsRelation name="is" source="figuresgeometriques.Rectangle" target="figuresgeometriques.FormesGeometriques"/>
+  </ClassDiagramRelations>
+</ClassDiagram>
