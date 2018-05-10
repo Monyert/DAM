@@ -10,14 +10,23 @@ package joc;
  * @author monyert
  */
 public class Item {
-    public String name;
-    public int attackbonus;
-    public int defensebonus;
+    private String name;
+    private int attackbonus;
+    private int defensebonus;
+    private int equipat=0;
 
     public Item(String name, int attackbonus, int defensebonus) {
         this.name = name;
         this.attackbonus = attackbonus;
         this.defensebonus = defensebonus;
+    }
+
+    public int getEquipat() {
+        return equipat;
+    }
+
+    public void setEquipat(int equipat) {
+        this.equipat = equipat;
     }
 
     public String getName() {

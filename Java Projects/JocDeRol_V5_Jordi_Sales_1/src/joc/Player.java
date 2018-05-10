@@ -205,9 +205,14 @@ public abstract class Player{
         if (condicio == true) {
             System.out.println( this.name + " ja porta el item: " + i.getName());
         } else {
+            if (i.getEquipat() == 0){
+                i.setEquipat(1);
+                Items.add(i);
+                System.out.println( this.name + " s'equipa amb: " + i.getName());
+            }else{
+                System.out.println("Un jugador ja porta aquest item: " + i.getName());
+            }
             
-            Items.add(i);
-            System.out.println( this.name + " s'equipa amb: " + i.getName());
         }
        // Items.add(i);
     }
@@ -221,8 +226,14 @@ public abstract class Player{
             }
         }
         if (condicio == true) {
-            Items.remove(i);
-            System.out.println( this.name + " es desequipa: " + i.getName());
+            if (i.getEquipat() == 1){
+                i.setEquipat(0);
+                Items.remove(i);
+                System.out.println( this.name + " es desequipa: " + i.getName());
+            }else{
+                System.out.println("Un jugador ja porta aquest item ");
+            }
+            
         } else {  
             System.out.println( this.name + " no porta el item: " + i.getName()+", no es pot desequipar");
         }
