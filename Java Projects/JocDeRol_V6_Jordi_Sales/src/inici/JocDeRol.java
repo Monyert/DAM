@@ -31,7 +31,12 @@ public class JocDeRol {
         ArrayList<Player> Players = new ArrayList<>();
         Alien q = new Alien("Jordi", 2, 3, 4);
         Players.add(q);
-        Alien e = new Alien("Jord", 2, 3, 4);
+        Alien e = new Alien("Jord2", 2, 3, 4);
+        Alien er = new Alien("Jord3", 2, 3, 4);
+        Alien erere = new Alien("Jord4", 2, 3, 4);
+        Players.add(e);
+        Players.add(er);
+        Players.add(erere);
         Team equip1 = new Team("Rekiem");
         Team equip2 = new Team("Rekiem2");
         Team equip3 = new Team("Rekiem3");
@@ -41,9 +46,9 @@ public class JocDeRol {
 
         Item object2 = new Item("Heavens Divider", 560, 0);
         Items.add(object2);
-        Players.add(e);
-        Player p; // No borrar(iterador)
-        Team t;   // No borrar(iterador)
+
+        Player p = null; // No borrar(iterador)
+        Team t = null;   // No borrar(iterador)
         Item objecte; //No borrar(iterador)
         int x;
         x = q.compareTo(e);
@@ -202,25 +207,45 @@ public class JocDeRol {
                                         break;
 
                                         case 4: { //Asignar Jugador a Equip
-                                            
-                                            int cont = 0;
-                                                        try {
-                                                            name = Utils.Utilitats.leerTextoG("Nom del Jugador: ");
-                                                            nomequip = Utils.Utilitats.leerTextoG("Nom del Equip: ");
-                                                            Iterator<Player> it;
-                                                            it = Players.iterator();
-                                                            while (it.hasNext()) {
-                                                                p = it.next();
-                                                                if (p.getName().equals(name)) {
-                                                                    System.out.println("Ja existeix aquest Jugador: " + name);
-                                                                    cont++;
-                                                                }
-                                                            }
-                                                            if (cont == 0) {
-                                                                // Com asignem
-                                                            }
-                                                        } catch (Exception exc) {
-                                                        }
+                                            try {
+                                                Player asign = null;
+                                                Team asignt = null;
+                                                name = Utils.Utilitats.leerTextoG("Nom del Jugador: ");
+                                                nomequip = Utils.Utilitats.leerTextoG("Nom del Equip: ");
+                                                int contp=0,contt=0;
+                                                Iterator<Player> it;
+                                                it = Players.iterator();
+                                                while (it.hasNext()) {
+                                                    p = it.next();
+                                                    if (p.getName().equals(name)) {
+                                                        System.out.println("Existeix aquest Jugador: " + name);
+                                                        contp++;
+                                                        asign = p;
+                                                    }
+                                                }
+                                                
+                                                Iterator<Team> it2;
+                                                it2 = Teams.iterator();
+                                                while (it2.hasNext()) {
+                                                    t = it2.next();
+                                                    if (t.getName().equals(nomequip)) {
+                                                        System.out.println("Existeix aquest Team: " + nomequip);
+                                                        contt++;
+                                                        asignt = t;
+                                                    }
+                                                }
+                                                if(contp == 0 || contt == 0){
+                                                    if (contp == 0){
+                                                        System.out.println("Aquest Player no existeix");
+                                                    }
+                                                    if(contt == 0){
+                                                        System.out.println("Aquest Item no existeix");
+                                                    }
+                                                }else if (contp == 1 && contt == 1){
+                                                    asign.add(asignt);
+                                                }
+                                            } catch (Exception exc) {
+                                            }
                                         }
                                         break;
                                         case 5: { //Assignar objecte a jugador
@@ -261,12 +286,12 @@ public class JocDeRol {
                                                     if (t.getName().equals(name)) {
                                                         System.out.println("Team: " + name + " ja esta creat.");
                                                         cont++;
-                                                    } 
-                                                }
-                                                if(cont == 0) {
-                                                        Team nout = new Team(name);
-                                                        Teams.add(nout);
                                                     }
+                                                }
+                                                if (cont == 0) {
+                                                    Team nout = new Team(name);
+                                                    Teams.add(nout);
+                                                }
                                             } catch (Exception exc) {
                                             }
                                         }
@@ -328,14 +353,14 @@ public class JocDeRol {
                                                     if (objecte.getName().equals(name)) {
                                                         System.out.println("Item: " + name + " ja esta creat.");
                                                         cont++;
-                                                    } 
-                                                }
-                                                if(cont == 0) {
-                                                        atac = Utils.Utilitats.leerEnteroG("Punts de atac");
-                                                        defensa = Utils.Utilitats.leerEnteroG("Punts de defensa");
-                                                        Item nouobj = new Item(name, atac, defensa);
-                                                        Items.add(nouobj);
                                                     }
+                                                }
+                                                if (cont == 0) {
+                                                    atac = Utils.Utilitats.leerEnteroG("Punts de atac");
+                                                    defensa = Utils.Utilitats.leerEnteroG("Punts de defensa");
+                                                    Item nouobj = new Item(name, atac, defensa);
+                                                    Items.add(nouobj);
+                                                }
                                             } catch (Exception exc) {
                                             }
 
