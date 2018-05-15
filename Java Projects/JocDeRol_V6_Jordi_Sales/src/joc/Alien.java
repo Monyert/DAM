@@ -29,7 +29,7 @@ public class Alien extends Player {
             System.out.println("ABANS DE L'ATAC:");
             System.out.print("Atacant:  " + this);
             System.out.print("\bAtacat:  " + p);
-            System.out.println("ATAC:");
+            System.out.println("\bATAC:");
 
         }
         if ((getLife() > 20) && (p.getLife() > 0)) {
