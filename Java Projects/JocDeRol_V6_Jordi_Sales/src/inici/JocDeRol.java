@@ -66,6 +66,7 @@ public class JocDeRol {
                 case 1: {//Estem en Configuracio
                     String name;
                     String nomequip;
+                    String nomitem;
                     int atac, defensa, vida;
                     int menu;
                     do {
@@ -239,7 +240,7 @@ public class JocDeRol {
                                                         System.out.println("Aquest Player no existeix");
                                                     }
                                                     if(contt == 0){
-                                                        System.out.println("Aquest Item no existeix");
+                                                        System.out.println("Aquest Equip no existeix");
                                                     }
                                                 }else if (contp == 1 && contt == 1){
                                                     asign.add(asignt);
@@ -249,7 +250,45 @@ public class JocDeRol {
                                         }
                                         break;
                                         case 5: { //Assignar objecte a jugador
-
+                                                     try {
+                                                Player asign = null;
+                                                Item asignit = null;
+                                                nomitem = Utils.Utilitats.leerTextoG("Nom del Item: ");
+                                                name = Utils.Utilitats.leerTextoG("Nom del Jugador: ");
+                                                int contp=0,contit=0;
+                                                Iterator<Player> it;
+                                                it = Players.iterator();
+                                                while (it.hasNext()) {
+                                                    p = it.next();
+                                                    if (p.getName().equals(name)) {
+                                                        System.out.println("Existeix aquest Jugador: " + name);
+                                                        contp++;
+                                                        asign = p;
+                                                    }
+                                                }
+                                                
+                                                Iterator<Item> it2;
+                                                it2 = Items.iterator();
+                                                while (it2.hasNext()) {
+                                                    objecte = it2.next();
+                                                    if (objecte.getName().equals(nomitem)) {
+                                                        System.out.println("Existeix aquest Item: " + nomitem);
+                                                        contit++;
+                                                        asignit = objecte;
+                                                    }
+                                                }
+                                                if(contp == 0 || contit == 0){
+                                                    if (contp == 0){
+                                                        System.out.println("Aquest Player no existeix");
+                                                    }
+                                                    if(contit == 0){
+                                                        System.out.println("Aquest Item no existeix");
+                                                    }
+                                                }else if (contp == 1 && contit == 1){
+                                                    asign.additem(asignit);
+                                                }
+                                            } catch (Exception exc) {
+                                            }
                                         }
                                         break;
                                         default: { //Tornar al menu Configuracio
@@ -320,7 +359,45 @@ public class JocDeRol {
                                         }
                                         break;
                                         case 4: {//Assignar equip a jugador
-
+                                                try {
+                                                Player asign = null;
+                                                Team asignt = null;
+                                                nomequip = Utils.Utilitats.leerTextoG("Nom del Equip: ");
+                                                name = Utils.Utilitats.leerTextoG("Nom del Jugador: ");
+                                                int contp=0,contt=0;
+                                                Iterator<Player> it;
+                                                it = Players.iterator();
+                                                while (it.hasNext()) {
+                                                    p = it.next();
+                                                    if (p.getName().equals(name)) {
+                                                        System.out.println("Existeix aquest Jugador: " + name);
+                                                        contp++;
+                                                        asign = p;
+                                                    }
+                                                }
+                                                
+                                                Iterator<Team> it2;
+                                                it2 = Teams.iterator();
+                                                while (it2.hasNext()) {
+                                                    t = it2.next();
+                                                    if (t.getName().equals(nomequip)) {
+                                                        System.out.println("Existeix aquest Team: " + nomequip);
+                                                        contt++;
+                                                        asignt = t;
+                                                    }
+                                                }
+                                                if(contp == 0 || contt == 0){
+                                                    if (contp == 0){
+                                                        System.out.println("Aquest Player no existeix");
+                                                    }
+                                                    if(contt == 0){
+                                                        System.out.println("Aquest Item no existeix");
+                                                    }
+                                                }else if (contp == 1 && contt == 1){
+                                                    asignt.add(asign);
+                                                }
+                                            } catch (Exception exc) {
+                                            }
                                         }
                                         break;
                                         default: { //Tornem al menu Configuracio
@@ -387,7 +464,45 @@ public class JocDeRol {
                                         }
                                         break;
                                         case 4: {//Asignar Item a Jugador
-
+                                                  try {
+                                                Player asign = null;
+                                                Item asignit = null;
+                                                nomitem = Utils.Utilitats.leerTextoG("Nom del Item: ");
+                                                name = Utils.Utilitats.leerTextoG("Nom del Jugador: ");
+                                                int contp=0,contit=0;
+                                                Iterator<Player> it;
+                                                it = Players.iterator();
+                                                while (it.hasNext()) {
+                                                    p = it.next();
+                                                    if (p.getName().equals(name)) {
+                                                        System.out.println("Existeix aquest Jugador: " + name);
+                                                        contp++;
+                                                        asign = p;
+                                                    }
+                                                }
+                                                
+                                                Iterator<Item> it2;
+                                                it2 = Items.iterator();
+                                                while (it2.hasNext()) {
+                                                    objecte = it2.next();
+                                                    if (objecte.getName().equals(nomitem)) {
+                                                        System.out.println("Existeix aquest Item: " + nomitem);
+                                                        contit++;
+                                                        asignit = objecte;
+                                                    }
+                                                }
+                                                if(contp == 0 || contit == 0){
+                                                    if (contp == 0){
+                                                        System.out.println("Aquest Player no existeix");
+                                                    }
+                                                    if(contit == 0){
+                                                        System.out.println("Aquest Item no existeix");
+                                                    }
+                                                }else if (contp == 1 && contit == 1){
+                                                    asign.additem(asignit);
+                                                }
+                                            } catch (Exception exc) {
+                                            }
                                         }
                                         break;
                                         default: {//Tornar al menu Configuracio

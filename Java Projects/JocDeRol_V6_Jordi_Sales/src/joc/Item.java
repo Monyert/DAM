@@ -20,7 +20,7 @@ public class Item implements Comparable <Item>{
         this.attackbonus = attackbonus;
         this.defensebonus = defensebonus;
     }
-
+    
     public int getEquipat() {
         return equipat;
     }
