@@ -19,7 +19,7 @@ public abstract class Player implements Comparable {
     private String name;
     private int attackPoints;
     private int defensePoints;
-    private int life;
+    private static int life = 100;
     private ArrayList <Team> Teams = new ArrayList <>();
     private ArrayList <Item> Items = new ArrayList <>();
 
