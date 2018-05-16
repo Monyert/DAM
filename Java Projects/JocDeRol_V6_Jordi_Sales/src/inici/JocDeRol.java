@@ -51,9 +51,9 @@ public class JocDeRol {
         Team t = null;   // No borrar(iterador)
         Item objecte; //No borrar(iterador)
         
-                    String name = null;
-                    String nomequip;
-                    String nomitem = null;
+                    String name = null;     //
+                    String nomequip;        // Campurar Nom dels Jugadors per teclat
+                    String nomitem = null;  //
         
         int menujdr;
         do {
@@ -118,9 +118,16 @@ public class JocDeRol {
                                                                 }
                                                             }
                                                             if (cont == 0) {
+                                                                do{
                                                                 atac = Utils.Utilitats.leerEnteroG("Punts de atac del Jugador: ");
+                                                                }while(atac < 1 || atac > 100);
                                                                 defensa = Utils.Utilitats.leerEnteroG("Punts de defensa del Jugador: ");
+                                                                do{
                                                                 vida = Utils.Utilitats.leerEnteroG("Punts de vida del Jugador: ");
+                                                                if(vida < 0){
+                                                                Utils.Utilitats.muestraMensajeG("La vida no pot ser negativa");
+                                                                }
+                                                                }while(vida < 0);
                                                                 Alien jug = new Alien(name, atac, defensa, vida);
                                                                 Players.add(jug);
                                                                 Utils.Utilitats.muestraMensajeG("Creat el Jugador: "+ name);
@@ -143,9 +150,16 @@ public class JocDeRol {
                                                                 }
                                                             }
                                                             if (cont == 0) {
+                                                                do{
                                                                 atac = Utils.Utilitats.leerEnteroG("Punts de atac del Jugador: ");
+                                                                }while(atac < 1 || atac > 100);
                                                                 defensa = Utils.Utilitats.leerEnteroG("Punts de defensa del Jugador: ");
+                                                                do{
                                                                 vida = Utils.Utilitats.leerEnteroG("Punts de vida del Jugador: ");
+                                                                if(vida < 0){
+                                                                Utils.Utilitats.muestraMensajeG("La vida no pot ser negativa");
+                                                                }
+                                                                }while(vida < 0);
                                                                 Human jug = new Human(name, atac, defensa, vida);
                                                                 Players.add(jug);
                                                                 Utils.Utilitats.muestraMensajeG("Creat el Jugador: "+ name);
@@ -168,9 +182,16 @@ public class JocDeRol {
                                                                 }
                                                             }
                                                             if (cont == 0) {
+                                                                do{
                                                                 atac = Utils.Utilitats.leerEnteroG("Punts de atac del Jugador: ");
+                                                                }while(atac < 1 || atac > 100);
                                                                 defensa = Utils.Utilitats.leerEnteroG("Punts de defensa del Jugador: ");
+                                                                do{
                                                                 vida = Utils.Utilitats.leerEnteroG("Punts de vida del Jugador: ");
+                                                                if(vida < 0){
+                                                                Utils.Utilitats.muestraMensajeG("La vida no pot ser negativa");
+                                                                }
+                                                                }while(vida < 0);
                                                                 Warrior jug = new Warrior(name, atac, defensa, vida);
                                                                 Players.add(jug);
                                                                 Utils.Utilitats.muestraMensajeG("Creat el Jugador: "+ name);
@@ -294,6 +315,7 @@ public class JocDeRol {
                                                 if (cont == 0) {
                                                     Team nout = new Team(name);
                                                     Teams.add(nout);
+                                                    Utils.Utilitats.muestraMensajeG("Creat el Equip: " + name);
                                                 }
                                             } catch (Exception exc) {
                                             }
@@ -355,10 +377,11 @@ public class JocDeRol {
                                                         System.out.println("Aquest Player no existeix");
                                                     }
                                                     if(contt == 0){
-                                                        System.out.println("Aquest Item no existeix");
+                                                        System.out.println("Aquest Equip no existeix");
                                                     }
                                                 }else if (contp == 1 && contt == 1){
                                                     asignt.add(asign);
+                                                    Utils.Utilitats.leerTextoG(name + "Entra al Equip: " + nomequip);
                                                 }
                                             } catch (Exception exc) {
                                             }
@@ -401,6 +424,7 @@ public class JocDeRol {
                                                     defensa = Utils.Utilitats.leerEnteroG("Punts de defensa");
                                                     Item nouobj = new Item(name, atac, defensa);
                                                     Items.add(nouobj);
+                                                    Utils.Utilitats.leerTextoG("Creat el Item: "+ name);
                                                 }
                                             } catch (Exception exc) {
                                             }
@@ -546,8 +570,13 @@ public static void pvp(String name, String namep2,ArrayList Players){
     try {
                                                 Player asigp = null;
                                                 Player asignp2 = null;
-                                                name = Utils.Utilitats.leerTextoG("Nom del Jugador: ");
-                                                namep2 = Utils.Utilitats.leerTextoG("Nom del Equip: ");
+                                                do{
+                                                name = Utils.Utilitats.leerTextoG("Nom del Jugador1: ");
+                                                namep2 = Utils.Utilitats.leerTextoG("Nom del Jugador2: ");
+                                                 if (name.equals(namep2)){
+                                                    Utils.Utilitats.muestraMensajeG("No pots atacar-te a tu mateixa!!");
+                                                }
+                                                }while(name.equals(namep2) == true);
                                                 int contp=0,contt=0;
                                                 Iterator<Player> it;
                                                 it = Players.iterator();
@@ -570,6 +599,7 @@ public static void pvp(String name, String namep2,ArrayList Players){
                                                         asignp2 = p2;
                                                     }
                                                 }
+                                               
                                                 if(contp == 0 || contt == 0){
                                                     if (contp == 0){
                                                         System.out.println("Player1 no existeix");
@@ -581,9 +611,8 @@ public static void pvp(String name, String namep2,ArrayList Players){
                                                     do {
                                                         asigp.Attack(asignp2);
                                                     }while(asigp.getLife()> 0 && asignp2.getLife() > 0);
-                                                    
-                                                    
                                                 }
+                                                
                                             } catch (Exception exc) {
                                             }
 }
