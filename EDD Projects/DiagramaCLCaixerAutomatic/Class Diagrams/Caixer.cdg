@@ -1,0 +1,134 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<ClassDiagram name="Caixer">
+  <ClassDiagramComponents>
+    <Class name="Cajero" package="" visibility="public" xPosition="100.0" yPosition="11.0">
+      <Fields>
+        <Field name="Codi" type="String" visibility="private"/>
+        <Field name="Banc" type="String" visibility="private"/>
+      </Fields>
+      <Constructors/>
+      <Methods/>
+    </Class>
+    <Class name="CajeroAutomatico" package="" visibility="public" xPosition="19.0" yPosition="146.0">
+      <Fields>
+        <Field name="Direccion" type="String" visibility="private"/>
+      </Fields>
+      <Constructors/>
+      <Methods/>
+    </Class>
+    <Class name="CajeroManual" package="" visibility="public" xPosition="223.0" yPosition="146.0">
+      <Fields>
+        <Field name="Oficina" type="String" visibility="private"/>
+      </Fields>
+      <Constructors/>
+      <Methods/>
+    </Class>
+    <Class name="Personal" package="" visibility="public" xPosition="258.0" yPosition="337.0">
+      <Fields>
+        <Field name="Nombre" type="String" visibility="private"/>
+        <Field name="DNI" type="String" visibility="private"/>
+        <Field name="Direccion" type="String" visibility="private"/>
+        <Field name="Telefono" type="int" visibility="private"/>
+        <Field name="Salario" type="Float" visibility="private"/>
+      </Fields>
+      <Constructors/>
+      <Methods>
+        <Method name="crear_cuenta" returnType="void" visibility="public"/>
+      </Methods>
+    </Class>
+    <Class name="Consorcio" package="" visibility="public" xPosition="20.0" yPosition="503.0">
+      <Fields>
+        <Field name="Nombre" type="String" visibility="private"/>
+        <Field name="CIF" type="String" visibility="private"/>
+      </Fields>
+      <Constructors/>
+      <Methods/>
+    </Class>
+    <Class name="Banco" package="" visibility="public" xPosition="296.0" yPosition="545.0">
+      <Fields>
+        <Field name="Nombre" type="String" visibility="private"/>
+        <Field name="DigitosCntrl" type="String" visibility="private"/>
+        <Field name="Direccion" type="String" visibility="private"/>
+        <Field name="Telefono" type="int" visibility="private"/>
+        <Field name="CIF" type="String" visibility="private"/>
+      </Fields>
+      <Constructors/>
+      <Methods>
+        <Method name="validar_usuario" returnType="void" visibility="public"/>
+      </Methods>
+    </Class>
+    <Class name="Transaccion" package="" visibility="public" xPosition="633.0" yPosition="11.0">
+      <Fields>
+        <Field name="Fecha" type="String" visibility="private"/>
+        <Field name="Hora" type="int" visibility="private"/>
+        <Field name="Tipo" type="String" visibility="private"/>
+        <Field name="Importe" type="Float" visibility="private"/>
+      </Fields>
+      <Constructors/>
+      <Methods/>
+    </Class>
+    <Class name="TransaccionManual" package="" visibility="public" xPosition="524.0" yPosition="176.0">
+      <Fields/>
+      <Constructors/>
+      <Methods/>
+    </Class>
+    <Class name="TransaccionAutomatica" package="" visibility="public" xPosition="762.0" yPosition="242.0">
+      <Fields/>
+      <Constructors/>
+      <Methods/>
+    </Class>
+    <Class name="Usuario" package="" visibility="public" xPosition="674.0" yPosition="364.0">
+      <Fields>
+        <Field name="Nombre" type="String" visibility="private"/>
+        <Field name="Direccion" type="String" visibility="private"/>
+        <Field name="Telefono" type="int" visibility="private"/>
+      </Fields>
+      <Constructors/>
+      <Methods>
+        <Method name="Ingresar_clave" returnType="void" visibility="public"/>
+        <Method name="cant_ingresar" returnType="void" visibility="public"/>
+        <Method name="cant_retirar" returnType="void" visibility="public"/>
+      </Methods>
+    </Class>
+    <Class name="TarjetadeCredito" package="" visibility="public" xPosition="563.0" yPosition="588.0">
+      <Fields>
+        <Field name="Numero" type="int" visibility="private"/>
+        <Field name="Banco" type="String" visibility="private"/>
+        <Field name="Limite" type="Float" visibility="private"/>
+        <Field name="Password" type="String" visibility="private"/>
+      </Fields>
+      <Constructors/>
+      <Methods/>
+    </Class>
+    <Class name="Cuenta" package="" visibility="public" xPosition="817.0" yPosition="588.0">
+      <Fields>
+        <Field name="Codigo" type="String" visibility="private"/>
+        <Field name="Saldo" type="Float" visibility="private"/>
+        <Field name="Limite" type="Float" visibility="private"/>
+        <Field name="Tipo" type="String" visibility="private"/>
+      </Fields>
+      <Constructors/>
+      <Methods>
+        <Method name="consultar_cuenta" returnType="void" visibility="public"/>
+      </Methods>
+    </Class>
+  </ClassDiagramComponents>
+  <ClassDiagramRelations>
+    <UseRelation name="" source="CajeroAutomatico" target="TransaccionAutomatica" sourceCardinality="1..*" targetCardinality="1..*"/>
+    <UseRelation name="" source="Transaccion" target="Cuenta" sourceCardinality="1..*" targetCardinality="1..1"/>
+    <UseRelation name="" source="CajeroManual" target="Personal" sourceCardinality="1..*" targetCardinality="1..*"/>
+    <UseRelation name="" source="Banco" target="Cuenta" sourceCardinality="1..1" targetCardinality="1..*"/>
+    <IsRelation name="is" source="CajeroManual" target="Cajero"/>
+    <IsRelation name="is" source="TransaccionManual" target="Transaccion"/>
+    <IsRelation name="is" source="TransaccionAutomatica" target="Transaccion"/>
+    <UseRelation name="" source="TransaccionManual" target="Personal" sourceCardinality="1..*" targetCardinality="1..1"/>
+    <UseRelation name="" source="CajeroAutomatico" target="Consorcio" sourceCardinality="1..*" targetCardinality="1..1"/>
+    <UseRelation name="" source="Usuario" target="Cuenta" sourceCardinality="1..*" targetCardinality="1..*"/>
+    <UseRelation name="" source="TarjetadeCredito" target="Cuenta" sourceCardinality="0..*" targetCardinality="1..1"/>
+    <UseRelation name="" source="Personal" target="Banco" sourceCardinality="1..*" targetCardinality="1..1"/>
+    <UseRelation name="" source="Usuario" target="TarjetadeCredito" sourceCardinality="1..1" targetCardinality="0..*"/>
+    <HasRelation name="Perteneixer" source="Consorcio" target="Banco" type="Aggregation" sourceCardinality="0..1" targetCardinality="1..*" collectionType="ArrayList"/>
+    <IsRelation name="is" source="CajeroAutomatico" target="Cajero"/>
+  </ClassDiagramRelations>
+</ClassDiagram>
