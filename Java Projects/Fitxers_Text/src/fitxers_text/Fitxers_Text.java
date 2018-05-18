@@ -11,9 +11,8 @@ import java.io.FileNotFoundException;
 import java.io.FileReader;
 import java.io.IOException;
 import java.nio.file.FileSystems;
-import java.util.ArrayList;
-import java.util.logging.Level;
-import java.util.logging.Logger;
+import java.util.Arrays;
+
 
 /**
  *
@@ -25,14 +24,17 @@ public class Fitxers_Text {
      * @param args the command line arguments
      */
     public static void main(String[] args) {
-
+            Utilitats.muestraMensajeG("Benvinguts al corrector d'Examens, \n"
+                    + "les dades han de ser introduides com a rutes absolutes.");
         int menu = 0;
         do {
+            System.out.println("");
             System.out.println("1. Mostrar Directori i Arxius");
             System.out.println("2. Llegir fitxer Alumne");
             System.out.println("3. LLegir fitxer Plantilla");
             System.out.println("4. Corregir Exam: ");
             System.out.println("5. Corregir Tots els fitxers");
+            System.out.println("6. Eixir del programa");
             menu = Utilitats.leerEnteroC("Opcio Menu: ");
 
             switch (menu) {
@@ -44,7 +46,9 @@ public class Fitxers_Text {
                     try {
                         llegirfitxerAlumne();
                     } catch (IOException ex) {
-                        Logger.getLogger(Fitxers_Text.class.getName()).log(Level.SEVERE, null, ex);
+                        Utilitats.muestraMensajeG("Error, Directori/Arxiu no valid.");
+                    }catch (NullPointerException ex2){
+                        
                     }
                 }
                 break;
@@ -52,7 +56,9 @@ public class Fitxers_Text {
                     try {
                         llegirfitxerRespostes();
                     } catch (IOException ex) {
-                        Logger.getLogger(Fitxers_Text.class.getName()).log(Level.SEVERE, null, ex);
+                        Utilitats.muestraMensajeG("Error, Directori/Arxiu no valid.");
+                    }catch (NullPointerException ex2){
+                        
                     }
                 }
                 break;
@@ -60,7 +66,9 @@ public class Fitxers_Text {
                     try {
                         corregirun();
                     } catch (IOException ex) {
-                        Logger.getLogger(Fitxers_Text.class.getName()).log(Level.SEVERE, null, ex);
+                        Utilitats.muestraMensajeG("Error, Directori/Arxiu no valid.");
+                    }catch (NullPointerException ex2){
+                        
                     }
                 }
                 break;
@@ -69,11 +77,16 @@ public class Fitxers_Text {
                         //corregirtots
                         corregirtots(Utilitats.leerTextoG("Disme la ruta del directori: "));
                     } catch (IOException ex) {
-                        Logger.getLogger(Fitxers_Text.class.getName()).log(Level.SEVERE, null, ex);
+                        Utilitats.muestraMensajeG("Error, Directori/Arxiu no valid.");
+                    }catch (NullPointerException ex2){
+                        
                     }
-                }
+                }break;
+                case 6: {
+                    System.exit(0);
+                }break;
             }
-        } while (menu > 0 && menu < 6);
+        } while (menu > 0 && menu < 7);
 
     }
 
@@ -95,20 +108,22 @@ public class Fitxers_Text {
     }
 
     public static void llegirfitxerRespostes() throws IOException {
+        File f = new File(Utilitats.leerTextoG("Disme la ruta del ficher Respostes: "));
         FileReader fr = null;
         try {
-            fr = new FileReader(Utilitats.leerTextoG("Disme la ruta del ficher Respostes: "));
+            fr = new FileReader(f);
 
         } catch (FileNotFoundException ex) {
-            Logger.getLogger(Fitxers_Text.class.getName()).log(Level.SEVERE, null, ex);
+            Utilitats.muestraMensajeG("Error, Directori/Arxiu no valid.");
         }
-        BufferedReader br = new BufferedReader(fr);
-        String s = "";
-        while (br.ready()) {
-            s = br.readLine();
-            System.out.println(s);
+        
+        int c;
+        System.out.println("Respostes de l'examen:");
+        while ((c = fr.read()) != -1) {
+            System.out.print((char) c + ",");
         }
-        br.close();
+        System.out.print("\b");
+        System.out.println("\n");
         fr.close();
     }
 
@@ -117,7 +132,7 @@ public class Fitxers_Text {
         try {
             fr = new FileReader(Utilitats.leerTextoG("Disme la ruta del ficher Alumne: "));
         } catch (FileNotFoundException ex) {
-            Logger.getLogger(Fitxers_Text.class.getName()).log(Level.SEVERE, null, ex);
+            Utilitats.muestraMensajeG("Error, Directori/Arxiu no valid.");
         }
         BufferedReader br = new BufferedReader(fr);
         String s = "";
@@ -168,15 +183,14 @@ public class Fitxers_Text {
     }
 
     public static void corregirtots(String ruta) throws IOException {
+        
         File d = new File(ruta);
-
+        
         System.out.println("És un directori: " + d.isDirectory());
         String[] elsFitxers = d.list();
+        Arrays.sort(elsFitxers);
         System.out.println("Llistat de Fitxers de: " + d.getAbsolutePath());
 
-        //File f = new File(Utilitats.leerTextoG("Disme la ruta del Directori: "));
-        //Primer Mostrem Tota la LLista
-        
         if (d.isDirectory() == true) {
             for (String f : elsFitxers) {
                 System.out.println("\t" + f);
@@ -186,21 +200,21 @@ public class Fitxers_Text {
             System.out.println("No es un directori.");
             System.out.println("");
             System.exit(0);
-            
+
         }
-        
-        
-        FileReader fr = new FileReader(Utilitats.leerTextoG("Disme quin de tots es el corrector: "));
+
+        File f = new File(Utilitats.leerTextoG("Disme quin de tots es el corrector: "));
+
         File f2;
         FileReader fr2 = null;
         if (d.isDirectory() == true) {
             for (String s : elsFitxers) {
-                
-                //System.out.println("\t" + s);
-                f2 = new File(d.getAbsolutePath() +FileSystems.getDefault().getSeparator()+ s);
-                
+                f2 = new File(d.getAbsolutePath() + FileSystems.getDefault().getSeparator() + s);
+                if (s.equals("respostes.tex")) {
+                    continue;
+                }
                 fr2 = new FileReader(f2);
-
+                FileReader fr = new FileReader(f);
                 int lletra;
                 int lletra2;
                 int E = 0, B = 0, F = 0;
@@ -215,26 +229,27 @@ public class Fitxers_Text {
                             F++;
                         }
 
-                       // System.out.print((char) lletra + " " + (char) lletra2);
-                       lletra = 0;
-                       lletra2 = 0;
+                        // System.out.print((char) lletra + " " + (char) lletra2);
+                        lletra = 0;
+                        lletra2 = 0;
                         break;
                     }
                 }
                 double nota;
                 nota = (E * 0.5) - (F * 0.25);
                 System.out.println("Notes de " + f2.getName() + "\b\b\b\b. La nota és de: " + nota + ". E,B,F --> [" + E + "," + B + "," + F + "]");
-                
 
+                fr.close();
             }
             System.out.println("");
-            fr.close();
+
             fr2.close();
+
         } else {
             System.out.println("No es un directori.");
             System.out.println("");
         }
-        
+
     }
 
 }
